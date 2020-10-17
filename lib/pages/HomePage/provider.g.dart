@@ -34,7 +34,7 @@ mixin _$HomeMobx on HomeBase, Store {
   @override
   String toString() {
     return '''
-user: ${user}
+user: $user
     ''';
   }
 }

@@ -27,7 +27,7 @@ mixin _$AppMobx on AppBase, Store {
   @override
   String toString() {
     return '''
-theme: ${theme}
+theme: $theme
     ''';
   }
 }
