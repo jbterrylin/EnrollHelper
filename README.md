@@ -12,8 +12,37 @@ Basic idea:
       - list
       - time table
   - mark specific schedule to wished list.
+  - compare time table (2 table stack together)
   - maybe can export?
 
+reminder:
+  reminder
+    - table can change name by click table name in output page
+  design shit:
+    - put card/ surface container/ sheet to sepearate part
+  db:
+    - user
+      - id
+      - name
+      - picture
+    - class
+      - id
+      - class type
+      - class code
+      - date time
+    - input
+      - id
+      - lecture code
+      - lecture name
+      - class (id, array)
+      - connected (just array of id e.x: id 1(lecture),3(tutor) need to take together)
+      - deleted (bool)
+    - output
+      - id
+      - favour (will save in love list)
+      - fovour datetime (time click save in love list)
+      - class(id, array)
+      - feature (late until x.xxpm, have break between each class, 3,4 day only, 之类)
 
 User manual for flutter mobx:
 https://github.com/Oskang09/flutter_mobx_cb/blob/master/README.md

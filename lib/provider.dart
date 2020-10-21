@@ -12,6 +12,8 @@ abstract class AppBase with Store {
 
   @observable
   ThemeData theme;
+  @observable
+  String language;
 
   AppBase(this.context) {
     theme = ThemeData(primaryColor: Color.fromRGBO(43, 43, 43, 1));
