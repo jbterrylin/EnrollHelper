@@ -8,8 +8,23 @@ part of 'provider.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$RegisterPage1Mobx on RegisterPage1Base, Store {
-  final _$sentenseAtom = Atom(name: 'RegisterPage1Base.sentense');
+mixin _$MainPageMobx on MainPageBase, Store {
+  final _$currentIndexAtom = Atom(name: 'MainPageBase.currentIndex');
+
+  @override
+  int get currentIndex {
+    _$currentIndexAtom.reportRead();
+    return super.currentIndex;
+  }
+
+  @override
+  set currentIndex(int value) {
+    _$currentIndexAtom.reportWrite(value, super.currentIndex, () {
+      super.currentIndex = value;
+    });
+  }
+
+  final _$sentenseAtom = Atom(name: 'MainPageBase.sentense');
 
   @override
   String get sentense {
@@ -24,23 +39,23 @@ mixin _$RegisterPage1Mobx on RegisterPage1Base, Store {
     });
   }
 
-  final _$RegisterPage1BaseActionController =
-      ActionController(name: 'RegisterPage1Base');
+  final _$MainPageBaseActionController = ActionController(name: 'MainPageBase');
 
   @override
-  dynamic getSentense() {
-    final _$actionInfo = _$RegisterPage1BaseActionController.startAction(
-        name: 'RegisterPage1Base.getSentense');
+  dynamic onTabTapped(int index) {
+    final _$actionInfo = _$MainPageBaseActionController.startAction(
+        name: 'MainPageBase.onTabTapped');
     try {
-      return super.getSentense();
+      return super.onTabTapped(index);
     } finally {
-      _$RegisterPage1BaseActionController.endAction(_$actionInfo);
+      _$MainPageBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String toString() {
     return '''
+currentIndex: ${currentIndex},
 sentense: ${sentense}
     ''';
   }

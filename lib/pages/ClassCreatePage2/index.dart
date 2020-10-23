@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/pages/RegisterPage1/provider.dart';
+// import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_mobx_cb/pages/ClassListPage/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<RegisterPage1Mobx>(context, listen: false);
+    final state = Provider.of<ClassListPageMobx>(context, listen: false);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,11 +30,11 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
-class RegisterPage1 extends StatelessWidget {
+class ClassListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider<RegisterPage1Mobx>(
-      create: (context) => RegisterPage1Mobx(context),
+    return Provider<ClassListPageMobx>(
+      create: (context) => ClassListPageMobx(context),
       dispose: (_, state) => state.dispose(),
       child: HomeWidget(),
     );

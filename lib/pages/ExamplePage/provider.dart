@@ -6,16 +6,16 @@ import 'package:mobx/mobx.dart';
 
 part 'provider.g.dart';
 
-class HomeMobx = HomeBase with _$HomeMobx;
+class ExamplePageMobx = ExamplePageBase with _$ExamplePageMobx;
 
-abstract class HomeBase with Store {
+abstract class ExamplePageBase with Store {
   final BuildContext context;
   HttpService http;
 
   @observable
   User user;
 
-  HomeBase(this.context) {
+  ExamplePageBase(this.context) {
     http = HttpService(context: this.context);
 
     getUser();

@@ -6,7 +6,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 1),
       () => Navigator.pushReplacementNamed(context, "/home"),
     );
 

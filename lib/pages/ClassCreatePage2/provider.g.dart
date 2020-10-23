@@ -8,33 +8,33 @@ part of 'provider.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$HomeMobx on HomeBase, Store {
-  final _$userAtom = Atom(name: 'HomeBase.user');
+mixin _$ClassListPageMobx on ClassListPageBase, Store {
+  final _$sentenseAtom = Atom(name: 'ClassListPageBase.sentense');
 
   @override
-  User get user {
-    _$userAtom.reportRead();
-    return super.user;
+  String get sentense {
+    _$sentenseAtom.reportRead();
+    return super.sentense;
   }
 
   @override
-  set user(User value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
+  set sentense(String value) {
+    _$sentenseAtom.reportWrite(value, super.sentense, () {
+      super.sentense = value;
     });
   }
 
-  final _$getUserAsyncAction = AsyncAction('HomeBase.getUser');
+  final _$getSentenseAsyncAction = AsyncAction('ClassListPageBase.getSentense');
 
   @override
-  Future<dynamic> getUser() {
-    return _$getUserAsyncAction.run(() => super.getUser());
+  Future<dynamic> getSentense() {
+    return _$getSentenseAsyncAction.run(() => super.getSentense());
   }
 
   @override
   String toString() {
     return '''
-user: ${user}
+sentense: ${sentense}
     ''';
   }
 }
