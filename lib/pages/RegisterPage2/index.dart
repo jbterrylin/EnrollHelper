@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<RegisterPage2Mobx>(context, listen: false);
+    final state = Provider.of<RegisterPage2Mobx>(context);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

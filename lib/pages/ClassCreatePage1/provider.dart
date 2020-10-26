@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx_cb/api/model/Class.dart';
+import 'package:flutter_mobx_cb/api/model/Subject.dart';
+import 'package:flutter_mobx_cb/pages/ClassCreatePage1/ClassTfs/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
@@ -11,20 +14,35 @@ abstract class ClassCreatePage1Base with Store {
   final BuildContext context;
   var appmobx;
 
+  final classkey = GlobalKey<FormState>();
+  TextEditingController classController;
   @observable
-  String sentense;
+  ObservableList<Class> classlist = new ObservableList<Class>();
+  @observable
+  ObservableList<Widget> classtf = new ObservableList<Widget>();
+
+  TextEditingController subjectcodecontroller;
+  TextEditingController subjectnamecontroller;
+
+  @action
+  addClassTf(int index) {
+    classtf.add(ClassTfs(index));
+  }
 
   ClassCreatePage1Base(this.context) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
-    getSentense();
+    classlist.add(Class(0));
+    addClassTf(0);
   }
 
-  @action
-  Future getSentense() async {
-    if (appmobx.language == "en" || appmobx.language == null)
-      sentense = "lets start";
-    else if (appmobx.language == "en") sentense = "让我们开始吧";
+  nextPage() {
+    Subject subject = new Subject();
+    subject.subjectcode = subjectcodecontroller.text;
+    subject.subjectname = subjectnamecontroller.text;
+    subject.classlist = classlist;
   }
 
-  void dispose() {}
+  void dispose() {
+    // classController.dispose();
+  }
 }

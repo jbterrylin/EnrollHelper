@@ -4,11 +4,11 @@ class GlobalStyle {
   GlobalStyle();
 
   getTitleStyle() {
-    return new TextStyle(fontSize: 32, fontWeight: FontWeight.bold);
+    return TextStyle(fontSize: 32, fontWeight: FontWeight.bold);
   }
 
   getTfStyle() {
-    return new TextStyle(fontSize: 24.0);
+    return TextStyle(fontSize: 24.0);
   }
 
   getTfDeco(String labelText, String hintText) {
@@ -17,6 +17,13 @@ class GlobalStyle {
         labelText: labelText,
         border: OutlineInputBorder(),
         hintText: hintText);
+  }
+
+  getDropdownButtonFormFieldDeco() {
+    return InputDecoration(
+        contentPadding:
+            new EdgeInsets.symmetric(vertical: 22.5, horizontal: 16),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)));
   }
 
   void dispose() {}

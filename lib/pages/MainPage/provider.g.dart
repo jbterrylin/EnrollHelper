@@ -39,6 +39,21 @@ mixin _$MainPageMobx on MainPageBase, Store {
     });
   }
 
+  final _$appbartitleAtom = Atom(name: 'MainPageBase.appbartitle');
+
+  @override
+  String get appbartitle {
+    _$appbartitleAtom.reportRead();
+    return super.appbartitle;
+  }
+
+  @override
+  set appbartitle(String value) {
+    _$appbartitleAtom.reportWrite(value, super.appbartitle, () {
+      super.appbartitle = value;
+    });
+  }
+
   final _$MainPageBaseActionController = ActionController(name: 'MainPageBase');
 
   @override
@@ -56,7 +71,8 @@ mixin _$MainPageMobx on MainPageBase, Store {
   String toString() {
     return '''
 currentIndex: ${currentIndex},
-sentense: ${sentense}
+sentense: ${sentense},
+appbartitle: ${appbartitle}
     ''';
   }
 }

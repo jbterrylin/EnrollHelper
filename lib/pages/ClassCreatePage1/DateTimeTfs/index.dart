@@ -1,0 +1,121 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_mobx_cb/pages/ClassCreatePage1/DateTimeTfs/provider.dart';
+// import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+
+class HomeWidget extends StatelessWidget {
+  final int classindex;
+  final int index;
+  HomeWidget(this.classindex, this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    final state = Provider.of<DateTimeTfsMobx>(context);
+
+    List<DropdownMenuItem> dropdownItems = [
+      DropdownMenuItem(
+          child: Text(
+            "Mon",
+            style: state.appmobx.getTfStyle(),
+          ),
+          value: 1),
+      DropdownMenuItem(
+          child: Text(
+            "Tue",
+            style: state.appmobx.getTfStyle(),
+          ),
+          value: 2),
+      DropdownMenuItem(
+          child: Text(
+            "Wed",
+            style: state.appmobx.getTfStyle(),
+          ),
+          value: 3),
+      DropdownMenuItem(
+          child: Text(
+            "Thu",
+            style: state.appmobx.getTfStyle(),
+          ),
+          value: 4),
+      DropdownMenuItem(
+          child: Text(
+            "Fri",
+            style: state.appmobx.getTfStyle(),
+          ),
+          value: 5),
+      DropdownMenuItem(
+          child: Text(
+            "Sat",
+            style: state.appmobx.getTfStyle(),
+          ),
+          value: 6),
+      DropdownMenuItem(
+          child: Text(
+            "Sun",
+            style: state.appmobx.getTfStyle(),
+          ),
+          value: 7),
+    ];
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      state.addPostFrameCallback();
+    });
+
+    return Container(
+        margin: const EdgeInsets.only(top: 16.0),
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  child: Observer(builder: (_) {
+                    return DropdownButtonFormField(
+                      decoration:
+                          state.appmobx.getDropdownButtonFormFieldDeco(),
+                      value: 1,
+                      isDense: true,
+                      onChanged: (value) {
+                        state.setDay(value);
+                      },
+                      items: dropdownItems,
+                    );
+                  })),
+              Container(
+                  width: MediaQuery.of(context).size.width * 0.59,
+                  child: TextField(
+                      style: state.appmobx.getTfStyle(),
+                      decoration: state.appmobx
+                          .getTfDeco("class time", "enter class time"),
+                      onTap: () async {
+                        TimeOfDay picked = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.now(),
+                          builder: (BuildContext context, Widget child) {
+                            return MediaQuery(
+                              data: MediaQuery.of(context)
+                                  .copyWith(alwaysUse24HourFormat: true),
+                              child: child,
+                            );
+                          },
+                        );
+                        state.setTime(picked);
+                      })),
+            ]));
+  }
+}
+
+class DateTimeTfs extends StatelessWidget {
+  final int classindex;
+  final int index;
+  DateTimeTfs(this.classindex, this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return Provider<DateTimeTfsMobx>(
+      create: (context) => DateTimeTfsMobx(context, classindex, index),
+      dispose: (_, state) => state.dispose(),
+      child: HomeWidget(classindex, index),
+    );
+  }
+}

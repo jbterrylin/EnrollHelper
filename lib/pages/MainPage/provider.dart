@@ -32,7 +32,6 @@ abstract class MainPageBase with Store {
     } else if (index == 2) {
       appbartitle = "schedule filter";
     }
-    debugPrint('cureent $currentIndex');
   }
 
   void dispose() {}
