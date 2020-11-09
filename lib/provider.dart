@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx_cb/service/http.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/GlobalStyle.dart';
 
@@ -9,7 +8,7 @@ class AppMobx = AppBase with _$AppMobx;
 
 abstract class AppBase extends GlobalStyle with Store {
   final BuildContext context;
-  HttpService http;
+  // HttpService http;
 
   // @observable
   // ThemeData theme;
@@ -18,7 +17,7 @@ abstract class AppBase extends GlobalStyle with Store {
 
   AppBase(this.context) {
     // theme = ThemeData(primaryColor: Color.fromRGBO(43, 43, 43, 1));
-    http = HttpService(context: this.context);
+    // http = HttpService(context: this.context);
   }
 
   void dispose() {}

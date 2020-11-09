@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage1/index.dart';
-// import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_cb/pages/MainPage/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
   // final List<Widget> _children = [];
-
-  final List<Widget> children = [
-    PlaceholderWidget(Colors.deepOrange),
-    ClassCreatePage1(),
-    PlaceholderWidget(Colors.green)
-  ];
-
-  final List<BottomNavigationBarItem> icons = [
-    BottomNavigationBarItem(icon: new Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(icon: new Icon(Icons.mail), label: 'Messages'),
-    BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +17,11 @@ class HomeWidget extends StatelessWidget {
             title: Text(
                 state.appbartitle == null ? "Loading..." : state.appbartitle),
           ),
-          body: children[state.currentIndex],
+          body: state.children[state.currentIndex.toString()],
           bottomNavigationBar: BottomNavigationBar(
             onTap: state.onTabTapped,
             currentIndex: state.currentIndex,
-            items: icons,
+            items: state.icons,
           ),
         );
       },

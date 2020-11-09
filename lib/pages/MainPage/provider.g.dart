@@ -54,7 +54,33 @@ mixin _$MainPageMobx on MainPageBase, Store {
     });
   }
 
+  final _$childrenAtom = Atom(name: 'MainPageBase.children');
+
+  @override
+  ObservableMap<String, Widget> get children {
+    _$childrenAtom.reportRead();
+    return super.children;
+  }
+
+  @override
+  set children(ObservableMap<String, Widget> value) {
+    _$childrenAtom.reportWrite(value, super.children, () {
+      super.children = value;
+    });
+  }
+
   final _$MainPageBaseActionController = ActionController(name: 'MainPageBase');
+
+  @override
+  dynamic changePage(String index, dynamic shit) {
+    final _$actionInfo = _$MainPageBaseActionController.startAction(
+        name: 'MainPageBase.changePage');
+    try {
+      return super.changePage(index, shit);
+    } finally {
+      _$MainPageBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic onTabTapped(int index) {
@@ -72,7 +98,8 @@ mixin _$MainPageMobx on MainPageBase, Store {
     return '''
 currentIndex: ${currentIndex},
 sentense: ${sentense},
-appbartitle: ${appbartitle}
+appbartitle: ${appbartitle},
+children: ${children}
     ''';
   }
 }

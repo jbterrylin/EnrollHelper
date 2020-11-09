@@ -35,11 +35,11 @@ mixin _$DateTimeTfsMobx on DateTimeTfsBase, Store {
   }
 
   @override
-  dynamic setTime(TimeOfDay value) {
+  dynamic setTime(TimeOfDay start, TimeOfDay end) {
     final _$actionInfo = _$DateTimeTfsBaseActionController.startAction(
         name: 'DateTimeTfsBase.setTime');
     try {
-      return super.setTime(value);
+      return super.setTime(start, end);
     } finally {
       _$DateTimeTfsBaseActionController.endAction(_$actionInfo);
     }

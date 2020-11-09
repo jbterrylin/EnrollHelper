@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx_cb/api/model/Class.dart';
 import 'package:flutter_mobx_cb/pages/ClassCreatePage1/provider.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
@@ -16,17 +15,17 @@ abstract class DateTimeTfsBase with Store {
 
   int classindex;
   int index;
-  TextEditingController daycontroller;
+  int day;
   TextEditingController timecontroller;
 
   @action
   addPostFrameCallback() {
-    daycontroller.text =
-        classcreatepage1mobx.classlist[classindex].day[index].toString() ??
-            1.toString();
-    timecontroller.text =
-        classcreatepage1mobx.classlist[classindex].time[index].toString() ??
-            TimeOfDay.now().toString();
+    day = classcreatepage1mobx.classlist[classindex].day[index] ?? 1;
+    timecontroller.text = classcreatepage1mobx.classlist[classindex].time[index]
+        .join('-')
+        .toString()
+        .replaceAll("TimeOfDay(", "")
+        .replaceAll(")", "");
   }
 
   @action
@@ -35,21 +34,26 @@ abstract class DateTimeTfsBase with Store {
   }
 
   @action
-  setTime(TimeOfDay value) {
-    debugPrint(value.toString());
-    classcreatepage1mobx.classlist[classindex].time[index] = value;
+  setTime(TimeOfDay start, TimeOfDay end) {
+    classcreatepage1mobx.classlist[classindex].time[index] = [
+      start.toString(),
+      end.toString()
+    ];
+    timecontroller.text = classcreatepage1mobx.classlist[classindex].time[index]
+        .join('-')
+        .toString()
+        .replaceAll("TimeOfDay(", "")
+        .replaceAll(")", "");
   }
 
   DateTimeTfsBase(this.context, this.classindex, this.index) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     classcreatepage1mobx =
         Provider.of<ClassCreatePage1Mobx>(context, listen: false);
-    daycontroller = TextEditingController();
     timecontroller = TextEditingController();
   }
 
   void dispose() {
-    daycontroller.dispose();
     timecontroller.dispose();
   }
 }

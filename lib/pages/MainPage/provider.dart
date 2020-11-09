@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx_cb/pages/ClassListPage/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_mobx_cb/pages/MainPage/index.dart';
+import 'package:flutter_mobx_cb/pages/ClassCreatePage2/index.dart';
 
 part 'provider.g.dart';
 
@@ -18,8 +21,31 @@ abstract class MainPageBase with Store {
   @observable
   String appbartitle;
 
+  @observable
+  ObservableMap<String, Widget> children = ObservableMap<String, Widget>();
+
+  var tempWidget = [];
+
+  final List<BottomNavigationBarItem> icons = [
+    BottomNavigationBarItem(icon: new Icon(Icons.home), label: 'Home'),
+    BottomNavigationBarItem(icon: new Icon(Icons.mail), label: 'Messages'),
+    BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
+  ];
+
   MainPageBase(this.context) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
+    children["0"] = PlaceholderWidget(Colors.deepOrange);
+    children["1"] = ClassListPage();
+    children["2"] = PlaceholderWidget(Colors.green);
+  }
+
+  @action
+  changePage(String index, var shit) {
+    if (index == "12") {
+      tempWidget.add(children["1"]);
+      children["1"] = ClassCreatePage2(shit);
+    }
+    // currentIndex = int.parse(index);
   }
 
   @action

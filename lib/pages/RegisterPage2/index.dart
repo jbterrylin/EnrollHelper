@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_cb/pages/RegisterPage2/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -19,8 +18,8 @@ class HomeWidget extends StatelessWidget {
                   child: new Flexible(
                       child: TextField(
                     style: state.appmobx.getTfStyle(),
-                    decoration:
-                        state.appmobx.getTfDeco("username", "enter username"),
+                    decoration: state.appmobx
+                        .getTfDeco("username", "enter username", ""),
                   )))
             ],
           )

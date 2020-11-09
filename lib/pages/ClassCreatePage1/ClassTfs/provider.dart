@@ -16,12 +16,15 @@ abstract class ClassTfsBase with Store {
   var classcreatepage1mobx;
 
   int index;
+  bool createnewclassalr = false;
+
   TextEditingController prioritycontroller;
+  @observable
+  String classcodeerrortext;
   TextEditingController classcodecontroller;
 
   @observable
   ObservableList<Widget> classtf = new ObservableList<Widget>();
-
   @observable
   ObservableList<Widget> daytimetf = new ObservableList<Widget>();
 
@@ -29,22 +32,35 @@ abstract class ClassTfsBase with Store {
   addPostFrameCallback() {
     prioritycontroller.text =
         classcreatepage1mobx.classlist[index].priority.toString() ??
-            1.toString();
+            99.toString();
     classcodecontroller.text =
         classcreatepage1mobx.classlist[index].classcode ?? '';
   }
 
   @action
-  setPriority(String value) {
-    classcreatepage1mobx.classlist[index].priority = int.parse(value);
+  setPriority() {
+    if (prioritycontroller.text == null || prioritycontroller.text == "") {
+      prioritycontroller.text = "99";
+      classcreatepage1mobx.classlist[index].priority = 99;
+    } else {
+      classcreatepage1mobx.classlist[index].priority =
+          int.parse(prioritycontroller.text);
+    }
   }
 
   @action
-  setClasscode(String value) {
-    classcreatepage1mobx.classlist[index].classcode = value;
-    if (classcreatepage1mobx.classlist.length - 1 == index && value != '') {
-      classcreatepage1mobx.classlist.add(Class(index + 1));
-      classcreatepage1mobx.addClassTf(index + 1);
+  setClasscode() {
+    classcreatepage1mobx.classlist[index].classcode = classcodecontroller.text;
+    if (classcodecontroller.text == "" || classcodecontroller.text == null) {
+      classcodeerrortext = "this column should not be empty";
+    } else {
+      classcodeerrortext = null;
+      if (classcreatepage1mobx.classlist.length - 1 == index &&
+          createnewclassalr == false) {
+        classcreatepage1mobx.classlist.add(Class(index + 1));
+        classcreatepage1mobx.addClassTf(index + 1);
+        createnewclassalr = true;
+      }
     }
   }
 
@@ -52,7 +68,15 @@ abstract class ClassTfsBase with Store {
   addDayTime() {
     daytimetf.add(DateTimeTfs(index, daytimetf.length));
     classcreatepage1mobx.classlist[index].day.add(1);
-    classcreatepage1mobx.classlist[index].time.add(TimeOfDay.now());
+    classcreatepage1mobx.classlist[index].time
+        .add([TimeOfDay.now().toString(), TimeOfDay.now().toString()]);
+  }
+
+  @action
+  deleteDayTime() {
+    daytimetf.removeLast();
+    classcreatepage1mobx.classlist[index].day.removeLast();
+    classcreatepage1mobx.classlist[index].time.removeLast();
   }
 
   ClassTfsBase(this.context, this.index) {
@@ -60,7 +84,13 @@ abstract class ClassTfsBase with Store {
     classcreatepage1mobx =
         Provider.of<ClassCreatePage1Mobx>(context, listen: false);
     prioritycontroller = TextEditingController();
+    prioritycontroller.addListener(() {
+      setPriority();
+    });
     classcodecontroller = TextEditingController();
+    classcodecontroller.addListener(() {
+      setClasscode();
+    });
     addDayTime();
   }
 

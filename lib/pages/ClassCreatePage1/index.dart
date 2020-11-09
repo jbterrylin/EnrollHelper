@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-// import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_cb/pages/ClassCreatePage1/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -10,57 +9,87 @@ class HomeWidget extends StatelessWidget {
     final state = Provider.of<ClassCreatePage1Mobx>(context);
 
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Container(
-                margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-                width: MediaQuery.of(context).size.width,
-                child: Column(children: <Widget>[
-                  Container(
-                      margin: const EdgeInsets.only(top: 16.0),
-                      child: Row(children: <Widget>[
-                        Flexible(
+        appBar: AppBar(
+          title: Text(
+            'Tabs Demo',
+            // style: state.appmobx.getTitleStyle(),
+          ),
+        ),
+        body: Observer(builder: (_) {
+          return SingleChildScrollView(
+              child: Container(
+                  margin: const EdgeInsets.only(left: 16.0, right: 16.0),
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(children: <Widget>[
+                    Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: <Widget>[
+                          Flexible(
+                              child: Text(
+                            "create class",
+                            style: state.appmobx.getTitleStyle(),
+                          ))
+                        ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 16.0),
+                        child: Row(children: <Widget>[
+                          Flexible(
                             child: TextField(
-                          style: state.appmobx.getTfStyle(),
-                          controller: state.subjectcodecontroller,
-                          decoration: state.appmobx
-                              .getTfDeco("subject code", "enter subject code"),
-                        )),
-                      ])),
-                  Container(
-                      margin: const EdgeInsets.only(top: 16.0),
-                      child: Row(children: <Widget>[
-                        Flexible(
-                            child: TextField(
-                          style: state.appmobx.getTfStyle(),
-                          controller: state.subjectnamecontroller,
-                          decoration: state.appmobx
-                              .getTfDeco("subject name", "enter subject name"),
-                        )),
-                      ])),
-                  Observer(builder: (_) {
-                    return Column(
+                                style: state.appmobx.getTfStyle(),
+                                controller: state.subjectcodecontroller,
+                                decoration: InputDecoration(
+                                  labelStyle:
+                                      new TextStyle(fontSize: 24, height: 0.7),
+                                  labelText: "subject code",
+                                  hintText: "enter subject code",
+                                  errorText: state.subjectcodeerrortext,
+                                  border: OutlineInputBorder(),
+                                )
+                                // decoration: state.appmobx.getTfDeco(
+                                //     "subject code",
+                                //     "enter subject code",
+                                //     "this column should not be empty",
+                                //     state.subjectcodevalid),
+                                ),
+                          )
+                        ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 16.0),
+                        child: Row(children: <Widget>[
+                          Flexible(
+                              child: TextField(
+                            style: state.appmobx.getTfStyle(),
+                            controller: state.subjectnamecontroller,
+                            decoration: state.appmobx.getTfDeco(
+                                "subject name",
+                                "enter subject name",
+                                state.subjectnameerrortext),
+                          )),
+                        ])),
+                    Column(
                       children: state.classtf,
-                    );
-                  }),
-                  Container(
-                      margin: const EdgeInsets.only(top: 32.0),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width -
-                                  32, // match_parent
-                              child: RaisedButton(
-                                  padding: EdgeInsets.all(16.0),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16)),
-                                  onPressed: () {
-                                    state.nextPage();
-                                  },
-                                  child: Text('next',
-                                      style: state.appmobx.getTfStyle())))
-                        ],
-                      ))
-                ]))));
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(top: 32.0),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width -
+                                    32, // match_parent
+                                child: RaisedButton(
+                                    padding: EdgeInsets.all(16.0),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                    onPressed: () {
+                                      state.nextPage();
+                                    },
+                                    child: Text('next',
+                                        style: state.appmobx.getTfStyle())))
+                          ],
+                        ))
+                  ])));
+        }));
   }
 }
 

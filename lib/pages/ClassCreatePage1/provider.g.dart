@@ -54,6 +54,28 @@ mixin _$ClassCreatePage1Mobx on ClassCreatePage1Base, Store {
   }
 
   @override
+  dynamic setSubjectCode() {
+    final _$actionInfo = _$ClassCreatePage1BaseActionController.startAction(
+        name: 'ClassCreatePage1Base.setSubjectCode');
+    try {
+      return super.setSubjectCode();
+    } finally {
+      _$ClassCreatePage1BaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setSubjectName() {
+    final _$actionInfo = _$ClassCreatePage1BaseActionController.startAction(
+        name: 'ClassCreatePage1Base.setSubjectName');
+    try {
+      return super.setSubjectName();
+    } finally {
+      _$ClassCreatePage1BaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 classlist: ${classlist},
