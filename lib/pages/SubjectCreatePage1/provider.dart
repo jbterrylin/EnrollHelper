@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Class.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage1/ClassTfs/index.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage2/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/ClassTfs/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
 
 part 'provider.g.dart';
 
-class ClassCreatePage1Mobx = ClassCreatePage1Base with _$ClassCreatePage1Mobx;
+class SubjectCreatePage1Mobx = SubjectCreatePage1Base
+    with _$SubjectCreatePage1Mobx;
 
-abstract class ClassCreatePage1Base with Store {
+abstract class SubjectCreatePage1Base with Store {
   final BuildContext context;
   var appmobx;
 
@@ -54,7 +55,7 @@ abstract class ClassCreatePage1Base with Store {
     }
   }
 
-  ClassCreatePage1Base(this.context) {
+  SubjectCreatePage1Base(this.context) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     subjectcodecontroller = TextEditingController();
     subjectcodecontroller.addListener(() {
@@ -101,7 +102,7 @@ abstract class ClassCreatePage1Base with Store {
       subject.subjectname = subjectnamecontroller.text;
       subject.classlist = tempclasslist;
       Navigator.push(context, MaterialPageRoute(builder: (_) {
-        return ClassCreatePage2(subject);
+        return SubjectCreatePage2(subject);
       }));
     }
   }

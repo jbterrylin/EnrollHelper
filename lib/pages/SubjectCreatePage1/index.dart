@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage1/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<ClassCreatePage1Mobx>(context);
+    final state = Provider.of<SubjectCreatePage1Mobx>(context);
 
     return Scaffold(
         appBar: AppBar(
@@ -93,11 +93,11 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
-class ClassCreatePage1 extends StatelessWidget {
+class SubjectCreatePage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider<ClassCreatePage1Mobx>(
-      create: (context) => ClassCreatePage1Mobx(context),
+    return Provider<SubjectCreatePage1Mobx>(
+      create: (context) => SubjectCreatePage1Mobx(context),
       dispose: (_, state) => state.dispose(),
       child: HomeWidget(),
     );

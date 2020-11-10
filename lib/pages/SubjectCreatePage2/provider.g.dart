@@ -8,8 +8,8 @@ part of 'provider.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$ClassCreatePage2Mobx on ClassCreatePage2Base, Store {
-  final _$connectedtfsAtom = Atom(name: 'ClassCreatePage2Base.connectedtfs');
+mixin _$SubjectCreatePage2Mobx on SubjectCreatePage2Base, Store {
+  final _$connectedtfsAtom = Atom(name: 'SubjectCreatePage2Base.connectedtfs');
 
   @override
   ObservableList<Widget> get connectedtfs {
@@ -24,7 +24,7 @@ mixin _$ClassCreatePage2Mobx on ClassCreatePage2Base, Store {
     });
   }
 
-  final _$sentenseAtom = Atom(name: 'ClassCreatePage2Base.sentense');
+  final _$sentenseAtom = Atom(name: 'SubjectCreatePage2Base.sentense');
 
   @override
   String get sentense {
@@ -39,28 +39,28 @@ mixin _$ClassCreatePage2Mobx on ClassCreatePage2Base, Store {
     });
   }
 
-  final _$ClassCreatePage2BaseActionController =
-      ActionController(name: 'ClassCreatePage2Base');
+  final _$SubjectCreatePage2BaseActionController =
+      ActionController(name: 'SubjectCreatePage2Base');
 
   @override
   dynamic addConnectedTfs() {
-    final _$actionInfo = _$ClassCreatePage2BaseActionController.startAction(
-        name: 'ClassCreatePage2Base.addConnectedTfs');
+    final _$actionInfo = _$SubjectCreatePage2BaseActionController.startAction(
+        name: 'SubjectCreatePage2Base.addConnectedTfs');
     try {
       return super.addConnectedTfs();
     } finally {
-      _$ClassCreatePage2BaseActionController.endAction(_$actionInfo);
+      _$SubjectCreatePage2BaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic getSentense() {
-    final _$actionInfo = _$ClassCreatePage2BaseActionController.startAction(
-        name: 'ClassCreatePage2Base.getSentense');
+    final _$actionInfo = _$SubjectCreatePage2BaseActionController.startAction(
+        name: 'SubjectCreatePage2Base.getSentense');
     try {
       return super.getSentense();
     } finally {
-      _$ClassCreatePage2BaseActionController.endAction(_$actionInfo);
+      _$SubjectCreatePage2BaseActionController.endAction(_$actionInfo);
     }
   }
 

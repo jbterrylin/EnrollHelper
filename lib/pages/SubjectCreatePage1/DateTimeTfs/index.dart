@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage1/DateTimeTfs/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/DateTimeTfs/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {

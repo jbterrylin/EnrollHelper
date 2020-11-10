@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx_cb/pages/ClassListPage/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectListPage/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_mobx_cb/pages/MainPage/index.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage2/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/index.dart';
 
 part 'provider.g.dart';
 
@@ -35,7 +35,7 @@ abstract class MainPageBase with Store {
   MainPageBase(this.context) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     children["0"] = PlaceholderWidget(Colors.deepOrange);
-    children["1"] = ClassListPage();
+    children["1"] = SubjectListPage();
     children["2"] = PlaceholderWidget(Colors.green);
   }
 
@@ -43,7 +43,7 @@ abstract class MainPageBase with Store {
   changePage(String index, var shit) {
     if (index == "12") {
       tempWidget.add(children["1"]);
-      children["1"] = ClassCreatePage2(shit);
+      children["1"] = SubjectCreatePage2(shit);
     }
     // currentIndex = int.parse(index);
   }

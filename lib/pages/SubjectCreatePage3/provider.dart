@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
+import 'package:flutter_mobx_cb/api/model/Subjects.dart';
 import 'package:flutter_mobx_cb/utils/storage.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
@@ -7,9 +8,10 @@ import 'package:provider/provider.dart';
 
 part 'provider.g.dart';
 
-class ClassCreatePage3Mobx = ClassCreatePage3Base with _$ClassCreatePage3Mobx;
+class SubjectCreatePage3Mobx = SubjectCreatePage3Base
+    with _$SubjectCreatePage3Mobx;
 
-abstract class ClassCreatePage3Base with Store {
+abstract class SubjectCreatePage3Base with Store {
   final BuildContext context;
   var appmobx;
 
@@ -18,19 +20,24 @@ abstract class ClassCreatePage3Base with Store {
   @observable
   String sentense;
 
-  ClassCreatePage3Base(this.context, this.subject) {
+  SubjectCreatePage3Base(this.context, this.subject) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     getSentense();
   }
 
   @action
-  toClassCreatePage() async {
-    Navigator.pop(context);
-    Navigator.pop(context);
-    Navigator.pop(context);
-
+  toSubjectCreatePage() async {
     SharedPref sharedPref = SharedPref();
-    sharedPref.save("Subject", subject);
+    try {
+      Subjects subjects = Subjects.fromJson(await sharedPref.read("subjects"));
+      subjects.subjects.add(subject);
+    } catch (Excepetion) {
+      sharedPref.save("subjects", Subjects(subjects: [subject]));
+    }
+
+    Navigator.pop(context);
+    Navigator.pop(context);
+    Navigator.pop(context);
   }
 
   @action

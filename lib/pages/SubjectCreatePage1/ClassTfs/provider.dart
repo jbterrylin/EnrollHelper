@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Class.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage1/DateTimeTfs/index.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage1/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/DateTimeTfs/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/provider.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +13,7 @@ class ClassTfsMobx = ClassTfsBase with _$ClassTfsMobx;
 abstract class ClassTfsBase with Store {
   final BuildContext context;
   var appmobx;
-  var classcreatepage1mobx;
+  var SubjectCreatepage1mobx;
 
   int index;
   bool createnewclassalr = false;
@@ -31,34 +31,35 @@ abstract class ClassTfsBase with Store {
   @action
   addPostFrameCallback() {
     prioritycontroller.text =
-        classcreatepage1mobx.classlist[index].priority.toString() ??
+        SubjectCreatepage1mobx.classlist[index].priority.toString() ??
             99.toString();
     classcodecontroller.text =
-        classcreatepage1mobx.classlist[index].classcode ?? '';
+        SubjectCreatepage1mobx.classlist[index].classcode ?? '';
   }
 
   @action
   setPriority() {
     if (prioritycontroller.text == null || prioritycontroller.text == "") {
       prioritycontroller.text = "99";
-      classcreatepage1mobx.classlist[index].priority = 99;
+      SubjectCreatepage1mobx.classlist[index].priority = 99;
     } else {
-      classcreatepage1mobx.classlist[index].priority =
+      SubjectCreatepage1mobx.classlist[index].priority =
           int.parse(prioritycontroller.text);
     }
   }
 
   @action
   setClasscode() {
-    classcreatepage1mobx.classlist[index].classcode = classcodecontroller.text;
+    SubjectCreatepage1mobx.classlist[index].classcode =
+        classcodecontroller.text;
     if (classcodecontroller.text == "" || classcodecontroller.text == null) {
       classcodeerrortext = "this column should not be empty";
     } else {
       classcodeerrortext = null;
-      if (classcreatepage1mobx.classlist.length - 1 == index &&
+      if (SubjectCreatepage1mobx.classlist.length - 1 == index &&
           createnewclassalr == false) {
-        classcreatepage1mobx.classlist.add(Class(index + 1));
-        classcreatepage1mobx.addClassTf(index + 1);
+        SubjectCreatepage1mobx.classlist.add(Class(index + 1));
+        SubjectCreatepage1mobx.addClassTf(index + 1);
         createnewclassalr = true;
       }
     }
@@ -67,22 +68,22 @@ abstract class ClassTfsBase with Store {
   @action
   addDayTime() {
     daytimetf.add(DateTimeTfs(index, daytimetf.length));
-    classcreatepage1mobx.classlist[index].day.add(1);
-    classcreatepage1mobx.classlist[index].time
+    SubjectCreatepage1mobx.classlist[index].day.add(1);
+    SubjectCreatepage1mobx.classlist[index].time
         .add([TimeOfDay.now().toString(), TimeOfDay.now().toString()]);
   }
 
   @action
   deleteDayTime() {
     daytimetf.removeLast();
-    classcreatepage1mobx.classlist[index].day.removeLast();
-    classcreatepage1mobx.classlist[index].time.removeLast();
+    SubjectCreatepage1mobx.classlist[index].day.removeLast();
+    SubjectCreatepage1mobx.classlist[index].time.removeLast();
   }
 
   ClassTfsBase(this.context, this.index) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
-    classcreatepage1mobx =
-        Provider.of<ClassCreatePage1Mobx>(context, listen: false);
+    SubjectCreatepage1mobx =
+        Provider.of<SubjectCreatePage1Mobx>(context, listen: false);
     prioritycontroller = TextEditingController();
     prioritycontroller.addListener(() {
       setPriority();

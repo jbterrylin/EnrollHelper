@@ -8,8 +8,8 @@ part of 'provider.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$ClassListPageMobx on ClassListPageBase, Store {
-  final _$sentenseAtom = Atom(name: 'ClassListPageBase.sentense');
+mixin _$SubjectCreatePage3Mobx on SubjectCreatePage3Base, Store {
+  final _$sentenseAtom = Atom(name: 'SubjectListPageBase.sentense');
 
   @override
   String get sentense {
@@ -24,24 +24,25 @@ mixin _$ClassListPageMobx on ClassListPageBase, Store {
     });
   }
 
-  final _$getSentenseAsyncAction = AsyncAction('ClassListPageBase.getSentense');
+  final _$getSentenseAsyncAction =
+      AsyncAction('SubjectListPageBase.getSentense');
 
   @override
   Future<dynamic> getSentense() {
     return _$getSentenseAsyncAction.run(() => super.getSentense());
   }
 
-  final _$ClassListPageBaseActionController =
-      ActionController(name: 'ClassListPageBase');
+  final _$SubjectListPageBaseActionController =
+      ActionController(name: 'SubjectListPageBase');
 
   @override
-  dynamic toClassCreatePage() {
-    final _$actionInfo = _$ClassListPageBaseActionController.startAction(
-        name: 'ClassListPageBase.toClassCreatePage');
+  dynamic toSubjectCreatePage() {
+    final _$actionInfo = _$SubjectListPageBaseActionController.startAction(
+        name: 'SubjectListPageBase.toSubjectCreatePage');
     try {
-      return super.toClassCreatePage();
+      return super.toSubjectCreatePage();
     } finally {
-      _$ClassListPageBaseActionController.endAction(_$actionInfo);
+      _$SubjectListPageBaseActionController.endAction(_$actionInfo);
     }
   }
 

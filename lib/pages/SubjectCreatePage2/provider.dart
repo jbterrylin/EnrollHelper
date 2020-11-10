@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage2/ConnectedTfs/index.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage3/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/ConnectedTfs/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage3/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
 
 part 'provider.g.dart';
 
-class ClassCreatePage2Mobx = ClassCreatePage2Base with _$ClassCreatePage2Mobx;
+class SubjectCreatePage2Mobx = SubjectCreatePage2Base
+    with _$SubjectCreatePage2Mobx;
 
-abstract class ClassCreatePage2Base with Store {
+abstract class SubjectCreatePage2Base with Store {
   final BuildContext context;
   var appmobx;
 
@@ -47,11 +48,11 @@ abstract class ClassCreatePage2Base with Store {
     //   }
     // });
     Navigator.push(context, MaterialPageRoute(builder: (_) {
-      return ClassCreatePage3(this.subject);
+      return SubjectCreatePage3(this.subject);
     }));
   }
 
-  ClassCreatePage2Base(this.context, this.subject) {
+  SubjectCreatePage2Base(this.context, this.subject) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     getSentense();
     addConnectedTfs();

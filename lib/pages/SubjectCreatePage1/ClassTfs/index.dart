@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage1/ClassTfs/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/ClassTfs/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {

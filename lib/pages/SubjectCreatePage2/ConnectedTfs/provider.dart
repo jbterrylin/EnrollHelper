@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage2/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/provider.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +11,7 @@ class ConnectedTfsMobx = ConnectedTfsBase with _$ConnectedTfsMobx;
 abstract class ConnectedTfsBase with Store {
   final BuildContext context;
   var appmobx;
-  var classcreatepage2mobx;
+  var SubjectCreatepage2mobx;
 
   int index;
   var connected = new List(2);
@@ -22,20 +22,20 @@ abstract class ConnectedTfsBase with Store {
 
   @action
   addPostFrameCallback() {
-    connected[0] = classcreatepage2mobx.subject.connected[index][0];
-    connected[1] = classcreatepage2mobx.subject.connected[index][1];
+    connected[0] = SubjectCreatepage2mobx.subject.connected[index][0];
+    connected[1] = SubjectCreatepage2mobx.subject.connected[index][1];
   }
 
   @action
   setClass(String value, int dropdown) {
-    classcreatepage2mobx.subject.connected[index][dropdown] = value;
+    SubjectCreatepage2mobx.subject.connected[index][dropdown] = value;
   }
 
   ConnectedTfsBase(this.context, this.index) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
-    classcreatepage2mobx =
-        Provider.of<ClassCreatePage2Mobx>(context, listen: false);
-    classcreatepage2mobx.subject.classlist
+    SubjectCreatepage2mobx =
+        Provider.of<SubjectCreatePage2Mobx>(context, listen: false);
+    SubjectCreatepage2mobx.subject.classlist
         .map((e) => e.classcode)
         .toList()
         .forEach((element) {

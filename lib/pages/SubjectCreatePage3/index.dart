@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
-import 'package:flutter_mobx_cb/pages/ClassCreatePage3/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage3/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<ClassCreatePage3Mobx>(context, listen: false);
+    final state = Provider.of<SubjectCreatePage3Mobx>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -32,7 +32,7 @@ class HomeWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16)),
                       onPressed: () {
-                        state.toClassCreatePage();
+                        state.toSubjectCreatePage();
                       },
                       child: Text('save', style: state.appmobx.getTfStyle()))
                 ],
@@ -43,14 +43,14 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
-class ClassCreatePage3 extends StatelessWidget {
+class SubjectCreatePage3 extends StatelessWidget {
   final Subject subject;
-  ClassCreatePage3(this.subject);
+  SubjectCreatePage3(this.subject);
 
   @override
   Widget build(BuildContext context) {
-    return Provider<ClassCreatePage3Mobx>(
-      create: (context) => ClassCreatePage3Mobx(context, subject),
+    return Provider<SubjectCreatePage3Mobx>(
+      create: (context) => SubjectCreatePage3Mobx(context, subject),
       dispose: (_, state) => state.dispose(),
       child: HomeWidget(),
     );
