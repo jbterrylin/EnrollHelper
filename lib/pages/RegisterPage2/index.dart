@@ -7,25 +7,34 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = Provider.of<RegisterPage2Mobx>(context);
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Container(
-                  width: MediaQuery.of(context).size.width * 0.90,
-                  child: new Flexible(
-                      child: TextField(
-                    style: state.appmobx.getTfStyle(),
-                    decoration: state.appmobx
-                        .getTfDeco("username", "enter username", ""),
-                  )))
-            ],
-          )
-        ],
-      ),
-    );
+        body: state.appmobx.getSideMargin(
+            context,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new Expanded(
+                          child: TextField(
+                              controller: state.namecontroller,
+                              style: state.appmobx.getTfStyle(),
+                              decoration: state.appmobx
+                                  .getTfDeco("name", "enter name", null)))
+                    ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    RaisedButton(
+                      onPressed: () {
+                        state.nextPage();
+                      },
+                      child: Text('next'),
+                    ),
+                  ],
+                )
+              ],
+            )));
   }
 }
 

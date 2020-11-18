@@ -8,9 +8,23 @@ part of 'provider.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$ClassTfsMobx on ClassTfsBase, Store {
-  final _$classcodeerrortextAtom =
-      Atom(name: 'ClassTfsBase.classcodeerrortext');
+mixin _$ClassTfMobx on ClassTfBase, Store {
+  final _$indexAtom = Atom(name: 'ClassTfBase.index');
+
+  @override
+  int get index {
+    _$indexAtom.reportRead();
+    return super.index;
+  }
+
+  @override
+  set index(int value) {
+    _$indexAtom.reportWrite(value, super.index, () {
+      super.index = value;
+    });
+  }
+
+  final _$classcodeerrortextAtom = Atom(name: 'ClassTfBase.classcodeerrortext');
 
   @override
   String get classcodeerrortext {
@@ -25,7 +39,7 @@ mixin _$ClassTfsMobx on ClassTfsBase, Store {
     });
   }
 
-  final _$classtfAtom = Atom(name: 'ClassTfsBase.classtf');
+  final _$classtfAtom = Atom(name: 'ClassTfBase.classtf');
 
   @override
   ObservableList<Widget> get classtf {
@@ -40,7 +54,7 @@ mixin _$ClassTfsMobx on ClassTfsBase, Store {
     });
   }
 
-  final _$daytimetfAtom = Atom(name: 'ClassTfsBase.daytimetf');
+  final _$daytimetfAtom = Atom(name: 'ClassTfBase.daytimetf');
 
   @override
   ObservableList<Widget> get daytimetf {
@@ -55,66 +69,67 @@ mixin _$ClassTfsMobx on ClassTfsBase, Store {
     });
   }
 
-  final _$ClassTfsBaseActionController = ActionController(name: 'ClassTfsBase');
+  final _$ClassTfBaseActionController = ActionController(name: 'ClassTfBase');
 
   @override
   dynamic addPostFrameCallback() {
-    final _$actionInfo = _$ClassTfsBaseActionController.startAction(
-        name: 'ClassTfsBase.addPostFrameCallback');
+    final _$actionInfo = _$ClassTfBaseActionController.startAction(
+        name: 'ClassTfBase.addPostFrameCallback');
     try {
       return super.addPostFrameCallback();
     } finally {
-      _$ClassTfsBaseActionController.endAction(_$actionInfo);
+      _$ClassTfBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic setPriority() {
-    final _$actionInfo = _$ClassTfsBaseActionController.startAction(
-        name: 'ClassTfsBase.setPriority');
+    final _$actionInfo = _$ClassTfBaseActionController.startAction(
+        name: 'ClassTfBase.setPriority');
     try {
       return super.setPriority();
     } finally {
-      _$ClassTfsBaseActionController.endAction(_$actionInfo);
+      _$ClassTfBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic setClasscode() {
-    final _$actionInfo = _$ClassTfsBaseActionController.startAction(
-        name: 'ClassTfsBase.setClasscode');
+    final _$actionInfo = _$ClassTfBaseActionController.startAction(
+        name: 'ClassTfBase.setClasscode');
     try {
       return super.setClasscode();
     } finally {
-      _$ClassTfsBaseActionController.endAction(_$actionInfo);
+      _$ClassTfBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic addDayTime() {
-    final _$actionInfo = _$ClassTfsBaseActionController.startAction(
-        name: 'ClassTfsBase.addDayTime');
+    final _$actionInfo = _$ClassTfBaseActionController.startAction(
+        name: 'ClassTfBase.addDayTime');
     try {
       return super.addDayTime();
     } finally {
-      _$ClassTfsBaseActionController.endAction(_$actionInfo);
+      _$ClassTfBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   dynamic deleteDayTime() {
-    final _$actionInfo = _$ClassTfsBaseActionController.startAction(
-        name: 'ClassTfsBase.deleteDayTime');
+    final _$actionInfo = _$ClassTfBaseActionController.startAction(
+        name: 'ClassTfBase.deleteDayTime');
     try {
       return super.deleteDayTime();
     } finally {
-      _$ClassTfsBaseActionController.endAction(_$actionInfo);
+      _$ClassTfBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String toString() {
     return '''
+index: ${index},
 classcodeerrortext: ${classcodeerrortext},
 classtf: ${classtf},
 daytimetf: ${daytimetf}

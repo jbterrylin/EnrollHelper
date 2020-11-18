@@ -24,6 +24,20 @@ mixin _$RegisterPage2Mobx on RegisterPage2Base, Store {
     });
   }
 
+  final _$RegisterPage2BaseActionController =
+      ActionController(name: 'RegisterPage2Base');
+
+  @override
+  dynamic nextPage() {
+    final _$actionInfo = _$RegisterPage2BaseActionController.startAction(
+        name: 'RegisterPage2Base.nextPage');
+    try {
+      return super.nextPage();
+    } finally {
+      _$RegisterPage2BaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

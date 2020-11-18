@@ -3,6 +3,8 @@ Because when need to enroll/arrange new sem class. Always fuck me up because the
 I use flutter because i want to learn flutter, i know c# is more easy to do these logical shit.
 New to flutter. Hope can done this shit. (ง •_•)ง
 
+flutter packages pub run build_runner build
+
 Basic idea:
   - input class related data.
     - can put it to essentail, not essential, 2,3,4... choose 1 shit to have more dynamic arrange.
@@ -58,32 +60,3 @@ reminder:
 
 User manual for flutter mobx:
 https://github.com/Oskang09/flutter_mobx_cb/blob/master/README.md
-
-
-Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: InputDecorator(
-                                decoration: InputDecoration(
-                                    contentPadding: new EdgeInsets.symmetric(
-                                        vertical: 22.0, horizontal: 16),
-                                    errorStyle: TextStyle(
-                                        color: Colors.redAccent,
-                                        fontSize: 16.0),
-                                    hintText: 'Please select expense',
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0))),
-                                isEmpty: dropdownItems.length == 0,
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton(
-                                    value: 1,
-                                    isDense: true,
-                                    onChanged: (value) {
-                                      // setState(() {
-                                      //   _currentSelectedValue = newValue;
-                                      //   state.didChange(newValue);
-                                      // });
-                                    },
-                                    items: dropdownItems,
-                                  ),
-                                )))

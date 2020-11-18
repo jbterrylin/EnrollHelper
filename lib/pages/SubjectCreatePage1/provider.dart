@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Class.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
-import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/ClassTfs/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/ClassTf/index.dart';
 import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
@@ -13,6 +13,7 @@ class SubjectCreatePage1Mobx = SubjectCreatePage1Base
     with _$SubjectCreatePage1Mobx;
 
 abstract class SubjectCreatePage1Base with Store {
+  var scaffoldkey = GlobalKey<ScaffoldState>();
   final BuildContext context;
   var appmobx;
 
@@ -32,7 +33,7 @@ abstract class SubjectCreatePage1Base with Store {
 
   @action
   addClassTf(int index) {
-    classtf.add(ClassTfs(index));
+    classtf.add(ClassTf(index));
   }
 
   @action
@@ -52,6 +53,13 @@ abstract class SubjectCreatePage1Base with Store {
       subjectnameerrortext = "this column should not be empty";
     } else {
       subjectnameerrortext = null;
+    }
+  }
+
+  deleteLastClass() {
+    if (classlist.length > 1) {
+      classlist.removeLast();
+      classtf.removeLast();
     }
   }
 
@@ -80,7 +88,9 @@ abstract class SubjectCreatePage1Base with Store {
       errorstring += "\t- enter subject name\n";
     }
     var tempclasslist = [...classlist];
-    if (tempclasslist.length != 1) {
+    if (tempclasslist.length != 1 &&
+        (classlist[classlist.length - 1].classcode == null ||
+            classlist[classlist.length - 1].classcode == "")) {
       tempclasslist.removeLast();
     }
     tempclasslist.forEach((element) {
@@ -88,6 +98,20 @@ abstract class SubjectCreatePage1Base with Store {
         errorstring += "\t- class " + (element.id + 1).toString() + " name\n";
       }
     });
+
+    String temp = "";
+    List classcode = List();
+    tempclasslist.map((e) => e.classcode).toList().forEach((u) {
+      if (classcode.contains(u))
+        temp = temp + u + ", ";
+      else
+        classcode.add(u);
+    });
+    if (temp != "") {
+      temp = temp.substring(0, temp.length - 2) + " is repeated\n";
+      errorstring += temp;
+    }
+
     errorstring = errorstring.substring(0, errorstring.length - 1);
 
     if (errorstring != "please:") {
@@ -95,7 +119,7 @@ abstract class SubjectCreatePage1Base with Store {
         content: new Text(errorstring),
         behavior: SnackBarBehavior.floating,
       );
-      Scaffold.of(context).showSnackBar(snackBar);
+      scaffoldkey.currentState.showSnackBar(snackBar);
     } else {
       Subject subject = new Subject();
       subject.subjectcode = subjectcodecontroller.text;

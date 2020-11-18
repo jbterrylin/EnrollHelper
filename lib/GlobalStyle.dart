@@ -3,37 +3,39 @@ import 'package:flutter/material.dart';
 class GlobalStyle {
   GlobalStyle();
 
+  getSideMargin(context, widget) {
+    return Container(
+        margin: const EdgeInsets.only(left: 16.0, right: 16.0),
+        width: MediaQuery.of(context).size.width,
+        child: widget);
+  }
+
   getTitleStyle() {
-    return TextStyle(fontSize: 32, fontWeight: FontWeight.bold);
+    return TextStyle();
   }
 
   getSmallTileStyle() {
-    return TextStyle(fontSize: 24.0);
+    return TextStyle();
   }
 
   getsExtraSmallTileStyle() {
-    return TextStyle(fontSize: 16.0);
+    return TextStyle();
   }
 
   getTfStyle() {
-    return TextStyle(fontSize: 24.0);
+    return TextStyle();
   }
 
   getTfDeco(String labeltext, String hinttext, String errortext) {
     return new InputDecoration(
-      labelStyle: new TextStyle(fontSize: 24, height: 0.7),
       labelText: labeltext,
       hintText: hinttext,
       errorText: errortext,
-      border: OutlineInputBorder(),
     );
   }
 
   getDropdownButtonFormFieldDeco() {
-    return InputDecoration(
-        contentPadding:
-            new EdgeInsets.symmetric(vertical: 22.5, horizontal: 16),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)));
+    return InputDecoration();
   }
 
   void dispose() {}

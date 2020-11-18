@@ -16,7 +16,6 @@ abstract class RegisterPage1Base with Store {
 
   RegisterPage1Base(this.context) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
-
     getSentense();
   }
 

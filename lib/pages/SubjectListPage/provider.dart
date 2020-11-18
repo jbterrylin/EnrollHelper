@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
-import 'package:flutter_mobx_cb/api/model/Subjects.dart';
 import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectListPage/SubjectCard/index.dart';
 import 'package:flutter_mobx_cb/utils/storage.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
@@ -20,13 +20,10 @@ abstract class SubjectListPageBase with Store {
   @observable
   String sentense;
 
+  List<Subject> subjects;
+
   @observable
   ObservableList<Widget> listtiletfs = new ObservableList<Widget>();
-
-  @action
-  addPostFrameCallback() {
-    loadSharedPrefs();
-  }
 
   SubjectListPageBase(this.context) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
@@ -37,27 +34,21 @@ abstract class SubjectListPageBase with Store {
   loadSharedPrefs() async {
     SharedPref sharedPref = SharedPref();
     try {
-      Subjects subjects = Subjects.fromJson(await sharedPref.read("subjects"));
-      for (var subject in subjects.subjects) {
-        listtiletfs.add(Container(
-            margin: const EdgeInsets.only(top: 16.0),
-            width: MediaQuery.of(context).size.width - 32,
-            child: Row(children: <Widget>[
-              Container(
-                  width: MediaQuery.of(context).size.width - 32,
-                  child: ListTile(
-                    leading: Icon(Icons.home),
-                    title: Text(subject.subjectcode,
-                        style: appmobx.getSmallTileStyle()),
-                    subtitle: Text(subject.subjectname,
-                        style: appmobx.getSmallTileStyle()),
-                    trailing: Icon(Icons.keyboard_arrow_right),
-                  ))
-            ])));
+      var temp = await sharedPref.read("subjects");
+      subjects = temp.map<Subject>((i) => Subject.fromJson(i)).toList();
+      for (int i = 0; i < subjects.length; i++) {
+        listtiletfs.add(SubjectCard(i));
       }
-    } catch (Excepetion) {
+      // } catch (Excepetion) {
+    } catch (a) {
       // do something
+      debugPrint(a.toString());
     }
+  }
+
+  @action
+  addPostFrameCallback() {
+    loadSharedPrefs();
   }
 
   @action

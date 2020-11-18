@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/ConnectedTfs/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/ConnectedTf/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -9,20 +9,16 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<ConnectedTfsMobx>(context);
-
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   state.addPostFrameCallback();
-    // });
+    final state = Provider.of<ConnectedTfMobx>(context);
 
     return Container(
-        margin: const EdgeInsets.only(top: 16.0),
+        margin: const EdgeInsets.only(top: 8.0),
         child: Observer(builder: (_) {
           return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.35,
                     child: DropdownButtonFormField(
                       decoration:
                           state.appmobx.getDropdownButtonFormFieldDeco(),
@@ -49,7 +45,7 @@ class HomeWidget extends StatelessWidget {
                   semanticLabel: 'Text to announce in accessibility modes',
                 ),
                 Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.35,
                     child: DropdownButtonFormField(
                       decoration:
                           state.appmobx.getDropdownButtonFormFieldDeco(),
@@ -74,14 +70,14 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
-class ConnectedTfs extends StatelessWidget {
+class ConnectedTf extends StatelessWidget {
   final int index;
-  ConnectedTfs(this.index);
+  ConnectedTf(this.index);
 
   @override
   Widget build(BuildContext context) {
-    return Provider<ConnectedTfsMobx>(
-      create: (context) => ConnectedTfsMobx(context, index),
+    return Provider<ConnectedTfMobx>(
+      create: (context) => ConnectedTfMobx(context, index),
       dispose: (_, state) => state.dispose(),
       child: HomeWidget(index),
     );

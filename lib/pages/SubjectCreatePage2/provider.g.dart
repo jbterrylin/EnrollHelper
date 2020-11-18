@@ -54,6 +54,17 @@ mixin _$SubjectCreatePage2Mobx on SubjectCreatePage2Base, Store {
   }
 
   @override
+  dynamic deleteConnectedTfs() {
+    final _$actionInfo = _$SubjectCreatePage2BaseActionController.startAction(
+        name: 'SubjectCreatePage2Base.deleteConnectedTfs');
+    try {
+      return super.deleteConnectedTfs();
+    } finally {
+      _$SubjectCreatePage2BaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic getSentense() {
     final _$actionInfo = _$SubjectCreatePage2BaseActionController.startAction(
         name: 'SubjectCreatePage2Base.getSentense');

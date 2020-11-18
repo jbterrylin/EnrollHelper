@@ -24,6 +24,21 @@ mixin _$SubjectListPageMobx on SubjectListPageBase, Store {
     });
   }
 
+  final _$listtiletfsAtom = Atom(name: 'SubjectListPageBase.listtiletfs');
+
+  @override
+  ObservableList<Widget> get listtiletfs {
+    _$listtiletfsAtom.reportRead();
+    return super.listtiletfs;
+  }
+
+  @override
+  set listtiletfs(ObservableList<Widget> value) {
+    _$listtiletfsAtom.reportWrite(value, super.listtiletfs, () {
+      super.listtiletfs = value;
+    });
+  }
+
   final _$getSentenseAsyncAction =
       AsyncAction('SubjectListPageBase.getSentense');
 
@@ -34,6 +49,17 @@ mixin _$SubjectListPageMobx on SubjectListPageBase, Store {
 
   final _$SubjectListPageBaseActionController =
       ActionController(name: 'SubjectListPageBase');
+
+  @override
+  dynamic addPostFrameCallback() {
+    final _$actionInfo = _$SubjectListPageBaseActionController.startAction(
+        name: 'SubjectListPageBase.addPostFrameCallback');
+    try {
+      return super.addPostFrameCallback();
+    } finally {
+      _$SubjectListPageBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic toSubjectCreatePage() {
@@ -49,7 +75,8 @@ mixin _$SubjectListPageMobx on SubjectListPageBase, Store {
   @override
   String toString() {
     return '''
-sentense: ${sentense}
+sentense: ${sentense},
+listtiletfs: ${listtiletfs}
     ''';
   }
 }

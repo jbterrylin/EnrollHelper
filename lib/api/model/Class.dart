@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Class {
   Class(this.id);
 
@@ -26,7 +24,10 @@ class Class {
         priority: json['priority'],
         classcode: json['classcode'],
         day: json['day'].cast<int>(),
-        time: json['time'].cast<List<String>>());
+        time: json['time']
+            .map<List<String>>((l) => List<String>.from(l))
+            .toList());
+    // .cast<List<String>>());
   }
 
   // Class.fromJson(Map<String, dynamic> json)

@@ -6,12 +6,12 @@ import 'package:provider/provider.dart';
 
 part 'provider.g.dart';
 
-class ConnectedTfsMobx = ConnectedTfsBase with _$ConnectedTfsMobx;
+class ConnectedTfMobx = ConnectedTfBase with _$ConnectedTfMobx;
 
-abstract class ConnectedTfsBase with Store {
+abstract class ConnectedTfBase with Store {
   final BuildContext context;
   var appmobx;
-  var SubjectCreatepage2mobx;
+  var subjectcreatepage2mobx;
 
   int index;
   var connected = new List(2);
@@ -22,20 +22,20 @@ abstract class ConnectedTfsBase with Store {
 
   @action
   addPostFrameCallback() {
-    connected[0] = SubjectCreatepage2mobx.subject.connected[index][0];
-    connected[1] = SubjectCreatepage2mobx.subject.connected[index][1];
+    // connected[0] = subjectcreatepage2mobx.subject.connected[index][0];
+    // connected[1] = subjectcreatepage2mobx.subject.connected[index][1];
   }
 
   @action
   setClass(String value, int dropdown) {
-    SubjectCreatepage2mobx.subject.connected[index][dropdown] = value;
+    subjectcreatepage2mobx.subject.connected[index][dropdown] = value;
   }
 
-  ConnectedTfsBase(this.context, this.index) {
+  ConnectedTfBase(this.context, this.index) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
-    SubjectCreatepage2mobx =
+    subjectcreatepage2mobx =
         Provider.of<SubjectCreatePage2Mobx>(context, listen: false);
-    SubjectCreatepage2mobx.subject.classlist
+    subjectcreatepage2mobx.subject.classlist
         .map((e) => e.classcode)
         .toList()
         .forEach((element) {

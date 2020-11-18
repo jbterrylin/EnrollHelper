@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_cb/pages/MainPage/index.dart';
+import 'package:flutter_mobx_cb/pages/RegisterPage1/index.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:flutter_mobx_cb/service/http.dart';
 import 'package:provider/provider.dart';
@@ -35,8 +36,7 @@ class App extends StatelessWidget {
             ),
             home: SplashPage(),
             routes: {
-              // '/home': (_) => HomePage(),
-              '/home': (_) => MainPage(),
+              '/registerpage1': (_) => RegisterPage1(),
             },
           );
         },

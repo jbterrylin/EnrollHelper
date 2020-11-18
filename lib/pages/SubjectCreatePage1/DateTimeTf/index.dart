@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/DateTimeTfs/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/DateTimeTf/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<DateTimeTfsMobx>(context);
+    final state = Provider.of<DateTimeTfMobx>(context);
 
     List<DropdownMenuItem> dropdownItems = [
       DropdownMenuItem(
@@ -61,7 +61,7 @@ class HomeWidget extends StatelessWidget {
     });
 
     return Container(
-        margin: const EdgeInsets.only(top: 16.0),
+        margin: const EdgeInsets.only(top: 8.0),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -80,8 +80,7 @@ class HomeWidget extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.59,
                   child: TextField(
                       style: state.appmobx.getTfStyle(),
-                      decoration: state.appmobx
-                          .getTfDeco("class time", "enter class time", null),
+                      decoration: state.appmobx.getTfDeco(null, null, null),
                       controller: state.timecontroller,
                       readOnly: true,
                       onTap: () async {
@@ -124,8 +123,8 @@ class DateTimeTfs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider<DateTimeTfsMobx>(
-      create: (context) => DateTimeTfsMobx(context, classindex, index),
+    return Provider<DateTimeTfMobx>(
+      create: (context) => DateTimeTfMobx(context, classindex, index),
       dispose: (_, state) => state.dispose(),
       child: HomeWidget(classindex, index),
     );

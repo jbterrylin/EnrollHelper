@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/ClassTfs/provider.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage1/ClassTf/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<ClassTfsMobx>(context);
+    final state = Provider.of<ClassTfMobx>(context);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       state.addPostFrameCallback();
@@ -18,7 +18,7 @@ class HomeWidget extends StatelessWidget {
     return Observer(builder: (_) {
       return Column(children: <Widget>[
         Container(
-            margin: const EdgeInsets.only(top: 32.0),
+            margin: const EdgeInsets.only(top: 16.0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -38,7 +38,7 @@ class HomeWidget extends StatelessWidget {
                           )))
                 ])),
         Container(
-            margin: const EdgeInsets.only(top: 16.0),
+            margin: const EdgeInsets.only(top: 8.0),
             child: Row(children: <Widget>[
               Flexible(
                   child: TextField(
@@ -57,9 +57,6 @@ class HomeWidget extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 RaisedButton(
-                    padding: EdgeInsets.all(16.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)),
                     onPressed: () {
                       state.addDayTime();
                     },
@@ -67,9 +64,6 @@ class HomeWidget extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: 16.0),
                   child: RaisedButton(
-                      padding: EdgeInsets.all(16.0),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16)),
                       onPressed: () {
                         state.deleteDayTime();
                       },
@@ -77,20 +71,20 @@ class HomeWidget extends StatelessWidget {
                           style: state.appmobx.getTfStyle())),
                 )
               ],
-            )),
+            ))
       ]);
     });
   }
 }
 
-class ClassTfs extends StatelessWidget {
+class ClassTf extends StatelessWidget {
   final int index;
-  ClassTfs(this.index);
+  ClassTf(this.index);
 
   @override
   Widget build(BuildContext context) {
-    return Provider<ClassTfsMobx>(
-      create: (context) => ClassTfsMobx(context, index),
+    return Provider<ClassTfMobx>(
+      create: (context) => ClassTfMobx(context, index),
       dispose: (_, state) => state.dispose(),
       child: HomeWidget(index),
     );

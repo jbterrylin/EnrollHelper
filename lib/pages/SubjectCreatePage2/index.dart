@@ -11,67 +11,52 @@ class HomeWidget extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Connected',
-            // style: state.appmobx.getTitleStyle(),
+            state.sentense != null ? state.sentense : "Loading ...",
+            style: state.appmobx.getTitleStyle(),
           ),
         ),
         body: Observer(builder: (_) {
           return SingleChildScrollView(
-              child: Container(
-                  margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(children: <Widget>[
+              child: state.appmobx.getSideMargin(
+                  context,
+                  Column(children: <Widget>[
                     Container(
-                        margin: const EdgeInsets.only(top: 16.0),
+                        margin: const EdgeInsets.only(top: 8.0),
                         child: Row(children: <Widget>[
-                          Text(
-                              state.sentense != null
-                                  ? state.sentense
-                                  : "Loading ...",
-                              style: state.appmobx.getTitleStyle()),
+                          Expanded(
+                              child: Column(
+                            children: state.connectedtfs,
+                          )),
                         ])),
-                    Column(
-                      children: state.connectedtfs,
-                    ),
                     Container(
                         margin: const EdgeInsets.only(top: 16.0),
                         child: Row(
                           children: <Widget>[
                             RaisedButton(
-                                padding: EdgeInsets.all(16.0),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
                                 onPressed: () {
                                   state.addConnectedTfs();
                                 },
-                                child: Text('add',
+                                child: Text('add connected',
                                     style: state.appmobx.getTfStyle())),
                             Container(
                               margin: const EdgeInsets.only(left: 16.0),
                               child: RaisedButton(
-                                  padding: EdgeInsets.all(16.0),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16)),
                                   onPressed: () {
                                     state.deleteConnectedTfs();
                                   },
-                                  child: Text('delete time',
+                                  child: Text('delete connected',
                                       style: state.appmobx.getTfStyle())),
                             )
                           ],
                         )),
                     Container(
-                        margin: const EdgeInsets.only(top: 32.0),
+                        margin: const EdgeInsets.only(top: 32.0, bottom: 16.0),
                         child: Row(
                           children: [
                             SizedBox(
                                 width: MediaQuery.of(context).size.width -
                                     32, // match_parent
                                 child: RaisedButton(
-                                    padding: EdgeInsets.all(16.0),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(16)),
                                     onPressed: () {
                                       state.nextPage();
                                     },

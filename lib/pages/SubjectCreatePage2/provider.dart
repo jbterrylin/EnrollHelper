@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
-import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/ConnectedTfs/index.dart';
-import 'package:flutter_mobx_cb/pages/SubjectCreatePage3/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/ConnectedTf/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectDetailPage/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +25,7 @@ abstract class SubjectCreatePage2Base with Store {
 
   @action
   addConnectedTfs() {
-    connectedtfs.add(ConnectedTfs(connectedtfs.length));
+    connectedtfs.add(ConnectedTf(connectedtfs.length));
     var reservevalue = subject.classlist.map((e) => e.classcode).toList()[0];
     subject.connected.add([reservevalue, reservevalue]);
   }
@@ -48,7 +48,7 @@ abstract class SubjectCreatePage2Base with Store {
     //   }
     // });
     Navigator.push(context, MaterialPageRoute(builder: (_) {
-      return SubjectCreatePage3(this.subject);
+      return SubjectDetailPage(subject, "SubjectCreatePage2");
     }));
   }
 
@@ -61,8 +61,8 @@ abstract class SubjectCreatePage2Base with Store {
   @action
   getSentense() {
     if (appmobx.language == "en" || appmobx.language == null)
-      sentense = "connected";
-    else if (appmobx.language == "en") sentense = "关联的班级";
+      sentense = "enter connected class";
+    else if (appmobx.language == "en") sentense = "输入关联的班级";
   }
 
   void dispose() {}

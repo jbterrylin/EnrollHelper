@@ -5,19 +5,15 @@ class Subjects {
 
   List<Subject> subjects;
 
-  Map<String, dynamic> toJson() => {
-        'subjects': subjects,
-      };
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'subjects': subjects,
+    };
+  }
 
   factory Subjects.fromJson(Map<String, dynamic> json) {
     var list = json['subjects'] as List;
     // print(list.runtimeType); //returns List<dynamic>
     return Subjects(subjects: list.map((i) => Subject.fromJson(i)).toList());
   }
-
-  // Subject.fromJson(Map<String, dynamic> json)
-  //     : subjectcode = json['subjectcode'],
-  //       subjectname = json['subjectname'],
-  //       classlist = json['classlist'],
-  //       connected = json['connected'];
 }
