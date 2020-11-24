@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/pages/SubjectListPage/provider.dart';
+import 'package:flutter_mobx_cb/pages/ScheduleListPage/provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<SubjectListPageMobx>(context, listen: false);
+    final state = Provider.of<ScheduleListPageMobx>(context, listen: false);
 
     return Scaffold(body: SingleChildScrollView(child: Observer(builder: (_) {
       return Container(
@@ -25,7 +25,7 @@ class HomeWidget extends StatelessWidget {
                             onPressed: () {
                               state.toSubjectCreatePage();
                             },
-                            child: Text('create class',
+                            child: Text('create schedule',
                                 style: state.appmobx.getTfStyle())))
                   ],
                 )
@@ -36,11 +36,11 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
-class SubjectListPage extends StatelessWidget {
+class ScheduleListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider<SubjectListPageMobx>(
-      create: (context) => SubjectListPageMobx(context),
+    return Provider<ScheduleListPageMobx>(
+      create: (context) => ScheduleListPageMobx(context),
       dispose: (_, state) => state.dispose(),
       child: HomeWidget(),
     );

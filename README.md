@@ -5,6 +5,11 @@ New to flutter. Hope can done this shit. (ง •_•)ง
 
 flutter packages pub run build_runner build
 
+before done need do:
+  - connected cannot 1 - 1, 2 - 2 (same class name)
+  - cant accept same subject name
+  - arrange subject (have favour time on upside, then arrange by time late)
+
 Basic idea:
   - input class related data.
     - can put it to essentail, not essential, 2,3,4... choose 1 shit to have more dynamic arrange.
@@ -18,8 +23,9 @@ Basic idea:
         - fuck lunch gv me 8 hour straight
         - 4 day pls
         - 3 day pls
-        - study, break, study break
+        - study, break, study, break
         - back home early
+        - back kampung early
         - no 早操
         - 早操boi
     - can show in different view, such as:

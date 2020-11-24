@@ -35,22 +35,49 @@ abstract class SubjectDetailPageBase with Store {
   nextPage() async {
     if (whocall == "SubjectCreatePage2") {
       SharedPref sharedPref = SharedPref();
-      try {
-        var subjects = await sharedPref.read("subjects");
-        sharedPref.remove("subjects");
-        sharedPref.save("subjects", [...subjects, subject]);
-      } catch (Excepetion) {
-        sharedPref.save("subjects", [subject]);
-      }
 
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => MainPage()),
         (Route<dynamic> route) => false,
       );
+
+      try {
+        var subjects = await sharedPref.read("subjects");
+        sharedPref.remove("subjects");
+        sharedPref.save("subjects", [...subjects, subject]);
+        debugPrint("aaaa");
+      } catch (Exception) {
+        sharedPref.save("subjects", [subject]);
+      }
     } else if (whocall == "SubjectListPage") {
-      Navigator.pop(context);
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => MainPage()),
+        (Route<dynamic> route) => false,
+      );
     }
+  }
+
+  deleteSubject() async {
+    try {
+      SharedPref sharedPref = SharedPref();
+      var temp = await sharedPref.read("subjects");
+      List<Subject> subjects =
+          temp.map<Subject>((i) => Subject.fromJson(i)).toList();
+      subjects
+          .removeWhere((element) => element.subjectname == subject.subjectname);
+
+      sharedPref.remove("subjects");
+      sharedPref.save("subjects", subjects);
+    } catch (a) {
+      debugPrint(a.toString());
+    }
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => MainPage()),
+      (Route<dynamic> route) => false,
+    );
   }
 
   @action

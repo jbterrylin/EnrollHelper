@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
-import 'package:flutter_mobx_cb/pages/SubjectListPage/provider.dart';
 import 'package:flutter_mobx_cb/pages/SubjectDetailPage/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectListPage/provider.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';

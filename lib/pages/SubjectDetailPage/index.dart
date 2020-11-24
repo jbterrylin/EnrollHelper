@@ -51,7 +51,18 @@ class HomeWidget extends StatelessWidget {
                                       state.whocall == "SubjectCreatePage2"
                                           ? 'save'
                                           : "back",
-                                      style: state.appmobx.getTfStyle()))
+                                      style: state.appmobx.getTfStyle())),
+                              Visibility(
+                                visible: state.whocall == "SubjectCreatePage2"
+                                    ? false
+                                    : true,
+                                child: RaisedButton(
+                                    onPressed: () {
+                                      state.deleteSubject();
+                                    },
+                                    child: Text("delete",
+                                        style: state.appmobx.getTfStyle())),
+                              )
                             ],
                           ))
                     ],
