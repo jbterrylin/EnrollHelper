@@ -18,6 +18,8 @@ abstract class ClassTfBase with Store {
   @observable
   int index;
 
+  TextEditingController typecontroller;
+
   TextEditingController prioritycontroller;
   @observable
   String classcodeerrortext;
@@ -35,6 +37,11 @@ abstract class ClassTfBase with Store {
             99.toString();
     classcodecontroller.text =
         subjectcreatepage1mobx.classlist[index].classcode ?? '';
+  }
+
+  @action
+  setType() {
+    subjectcreatepage1mobx.classlist[index].type = typecontroller.text;
   }
 
   @action
@@ -66,11 +73,6 @@ abstract class ClassTfBase with Store {
   @action
   addDayTime() {
     daytimetf.add(DateTimeTfs(index, daytimetf.length));
-    subjectcreatepage1mobx.classlist[index].day.add(1);
-    subjectcreatepage1mobx.classlist[index].time.add([
-      TimeOfDay(hour: 0, minute: 0).format(context),
-      TimeOfDay(hour: 0, minute: 0).format(context)
-    ]);
   }
 
   @action
@@ -78,7 +80,6 @@ abstract class ClassTfBase with Store {
     if (daytimetf.length > 1) {
       daytimetf.removeLast();
       subjectcreatepage1mobx.classlist[index].day.removeLast();
-      subjectcreatepage1mobx.classlist[index].time.removeLast();
     }
   }
 
@@ -86,6 +87,10 @@ abstract class ClassTfBase with Store {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     subjectcreatepage1mobx =
         Provider.of<SubjectCreatePage1Mobx>(context, listen: false);
+    typecontroller = TextEditingController();
+    typecontroller.addListener(() {
+      setType();
+    });
     prioritycontroller = TextEditingController();
     prioritycontroller.addListener(() {
       setPriority();

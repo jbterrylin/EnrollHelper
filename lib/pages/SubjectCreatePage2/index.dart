@@ -23,6 +23,29 @@ class HomeWidget extends StatelessWidget {
                     Container(
                         margin: const EdgeInsets.only(top: 8.0),
                         child: Row(children: <Widget>[
+                          Text(
+                            "each type's needed n",
+                            style: state.appmobx.getTitleStyle(),
+                          )
+                        ])),
+                    Container(
+                        child: Row(children: <Widget>[
+                      Expanded(
+                          child: Column(
+                        children: state.typetfs,
+                      )),
+                    ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: <Widget>[
+                          Text(
+                            "connected",
+                            style: state.appmobx.getTitleStyle(),
+                          )
+                        ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: <Widget>[
                           Expanded(
                               child: Column(
                             children: state.connectedtfs,

@@ -23,6 +23,53 @@ class HomeWidget extends StatelessWidget {
                   context,
                   Column(children: <Widget>[
                     Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: [
+                          Flexible(
+                              child: Container(
+                                  child: TextField(
+                                      controller:
+                                          state.nneededsubjectcontroller,
+                                      keyboardType: TextInputType.number,
+                                      style: state.appmobx.getTfStyle(),
+                                      decoration: state.appmobx.getTfDeco(
+                                          "total needed subject",
+                                          "enter total needed subject",
+                                          null))))
+                        ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: <Widget>[
+                          Text(
+                            "must subjects",
+                            style: state.appmobx.getTitleStyle(),
+                          )
+                        ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: <Widget>[
+                          Expanded(
+                              child: Wrap(
+                                  spacing: 8.0, //主轴间距
+                                  children: state.mustsubjects))
+                        ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: <Widget>[
+                          Text(
+                            "not must subjects",
+                            style: state.appmobx.getTitleStyle(),
+                          )
+                        ])),
+                    Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        child: Row(children: <Widget>[
+                          Expanded(
+                              child: Wrap(
+                                  spacing: 8.0, //主轴间距
+                                  children: state.notmustsubjects))
+                        ])),
+                    Container(
                         margin: const EdgeInsets.only(top: 32.0, bottom: 16.0),
                         child: Row(
                           children: [

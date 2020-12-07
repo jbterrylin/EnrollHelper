@@ -25,10 +25,85 @@ mixin _$ScheduleCreatePage2Mobx on ScheduleCreatePage2Base, Store {
     });
   }
 
+  final _$mustsubjectsAtom = Atom(name: 'ScheduleCreatePage2Base.mustsubjects');
+
+  @override
+  ObservableList<Widget> get mustsubjects {
+    _$mustsubjectsAtom.reportRead();
+    return super.mustsubjects;
+  }
+
+  @override
+  set mustsubjects(ObservableList<Widget> value) {
+    _$mustsubjectsAtom.reportWrite(value, super.mustsubjects, () {
+      super.mustsubjects = value;
+    });
+  }
+
+  final _$notmustsubjectsAtom =
+      Atom(name: 'ScheduleCreatePage2Base.notmustsubjects');
+
+  @override
+  ObservableList<Widget> get notmustsubjects {
+    _$notmustsubjectsAtom.reportRead();
+    return super.notmustsubjects;
+  }
+
+  @override
+  set notmustsubjects(ObservableList<Widget> value) {
+    _$notmustsubjectsAtom.reportWrite(value, super.notmustsubjects, () {
+      super.notmustsubjects = value;
+    });
+  }
+
+  final _$mustsubjectstringsAtom =
+      Atom(name: 'ScheduleCreatePage2Base.mustsubjectstrings');
+
+  @override
+  ObservableList<String> get mustsubjectstrings {
+    _$mustsubjectstringsAtom.reportRead();
+    return super.mustsubjectstrings;
+  }
+
+  @override
+  set mustsubjectstrings(ObservableList<String> value) {
+    _$mustsubjectstringsAtom.reportWrite(value, super.mustsubjectstrings, () {
+      super.mustsubjectstrings = value;
+    });
+  }
+
+  final _$ScheduleCreatePage2BaseActionController =
+      ActionController(name: 'ScheduleCreatePage2Base');
+
+  @override
+  dynamic setNNeededSubject() {
+    final _$actionInfo = _$ScheduleCreatePage2BaseActionController.startAction(
+        name: 'ScheduleCreatePage2Base.setNNeededSubject');
+    try {
+      return super.setNNeededSubject();
+    } finally {
+      _$ScheduleCreatePage2BaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setsubjectchips() {
+    final _$actionInfo = _$ScheduleCreatePage2BaseActionController.startAction(
+        name: 'ScheduleCreatePage2Base.setsubjectchips');
+    try {
+      return super.setsubjectchips();
+    } finally {
+      _$ScheduleCreatePage2BaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-selectedchipname: ${selectedchipname}
+selectedchipname: ${selectedchipname},
+mustsubjects: ${mustsubjects},
+notmustsubjects: ${notmustsubjects},
+mustsubjectstrings: ${mustsubjectstrings}
     ''';
   }
 }

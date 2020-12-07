@@ -83,6 +83,17 @@ mixin _$ClassTfMobx on ClassTfBase, Store {
   }
 
   @override
+  dynamic setType() {
+    final _$actionInfo =
+        _$ClassTfBaseActionController.startAction(name: 'ClassTfBase.setType');
+    try {
+      return super.setType();
+    } finally {
+      _$ClassTfBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic setPriority() {
     final _$actionInfo = _$ClassTfBaseActionController.startAction(
         name: 'ClassTfBase.setPriority');

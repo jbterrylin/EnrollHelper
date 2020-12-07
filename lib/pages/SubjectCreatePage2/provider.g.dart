@@ -24,6 +24,37 @@ mixin _$SubjectCreatePage2Mobx on SubjectCreatePage2Base, Store {
     });
   }
 
+  final _$typetfsAtom = Atom(name: 'SubjectCreatePage2Base.typetfs');
+
+  @override
+  ObservableList<Widget> get typetfs {
+    _$typetfsAtom.reportRead();
+    return super.typetfs;
+  }
+
+  @override
+  set typetfs(ObservableList<Widget> value) {
+    _$typetfsAtom.reportWrite(value, super.typetfs, () {
+      super.typetfs = value;
+    });
+  }
+
+  final _$dropdownItemsAtom =
+      Atom(name: 'SubjectCreatePage2Base.dropdownItems');
+
+  @override
+  ObservableList<DropdownMenuItem<dynamic>> get dropdownItems {
+    _$dropdownItemsAtom.reportRead();
+    return super.dropdownItems;
+  }
+
+  @override
+  set dropdownItems(ObservableList<DropdownMenuItem<dynamic>> value) {
+    _$dropdownItemsAtom.reportWrite(value, super.dropdownItems, () {
+      super.dropdownItems = value;
+    });
+  }
+
   final _$sentenseAtom = Atom(name: 'SubjectCreatePage2Base.sentense');
 
   @override
@@ -41,6 +72,17 @@ mixin _$SubjectCreatePage2Mobx on SubjectCreatePage2Base, Store {
 
   final _$SubjectCreatePage2BaseActionController =
       ActionController(name: 'SubjectCreatePage2Base');
+
+  @override
+  dynamic addNTypeTfs() {
+    final _$actionInfo = _$SubjectCreatePage2BaseActionController.startAction(
+        name: 'SubjectCreatePage2Base.addNTypeTfs');
+    try {
+      return super.addNTypeTfs();
+    } finally {
+      _$SubjectCreatePage2BaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic addConnectedTfs() {
@@ -79,6 +121,8 @@ mixin _$SubjectCreatePage2Mobx on SubjectCreatePage2Base, Store {
   String toString() {
     return '''
 connectedtfs: ${connectedtfs},
+typetfs: ${typetfs},
+dropdownItems: ${dropdownItems},
 sentense: ${sentense}
     ''';
   }

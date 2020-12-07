@@ -5,6 +5,9 @@ New to flutter. Hope can done this shit. (ง •_•)ง
 
 flutter packages pub run build_runner build
 
+change chain icon to dropdown: only connect, connect, only connect vice versa
+only show connected class shit
+
 before done need do:
   - connected cannot 1 - 1, 2 - 2 (same class name)
   - cant accept same subject name

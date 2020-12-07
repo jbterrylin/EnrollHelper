@@ -30,6 +30,15 @@ class HomeWidget extends StatelessWidget {
                       child: Container(
                           width: MediaQuery.of(context).size.width * 0.35,
                           child: TextField(
+                            controller: state.typecontroller,
+                            style: state.appmobx.getTfStyle(),
+                            decoration: state.appmobx
+                                .getTfDeco("type", "enter type", null),
+                          ))),
+                  Flexible(
+                      child: Container(
+                          width: MediaQuery.of(context).size.width * 0.35,
+                          child: TextField(
                             controller: state.prioritycontroller,
                             keyboardType: TextInputType.number,
                             style: state.appmobx.getTfStyle(),

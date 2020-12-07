@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
 import 'package:flutter_mobx_cb/pages/MainPage/index.dart';
 import 'package:flutter_mobx_cb/pages/SubjectDetailPage/ClassCard/index.dart';
-import 'package:flutter_mobx_cb/utils/storage.dart';
+import 'package:flutter_mobx_cb/utils/Storage.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
@@ -21,11 +21,16 @@ abstract class SubjectDetailPageBase with Store {
   List<Widget> classcards = List<Widget>();
 
   @observable
+  String type = "";
+
+  @observable
   String sentense;
 
   SubjectDetailPageBase(this.context, this.subject, this.whocall) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     getSentense();
+    subject.typelist.forEach((e) => type += e[0] + ": " + e[1] + "\n");
+    // type
     for (int i = 0; i < subject.classlist.length; i++) {
       classcards.add(ClassCard(i));
     }

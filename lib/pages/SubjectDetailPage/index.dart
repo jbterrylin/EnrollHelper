@@ -36,6 +36,25 @@ class HomeWidget extends StatelessWidget {
                               ],
                             ),
                           )),
+                      Container(
+                          margin: const EdgeInsets.only(top: 8.0),
+                          child: Card(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                ListTile(
+                                  title: Text("needed class for each type"),
+                                ),
+                                Container(
+                                    margin: const EdgeInsets.only(
+                                        left: 16.0, top: 4.0, bottom: 20.0),
+                                    child: Row(children: <Widget>[
+                                      Text(state.type ?? "loading...")
+                                    ]))
+                              ],
+                            ),
+                          )),
+                      // Text(state.type ?? "loading...")
                       Column(children: state.classcards),
                       Container(
                           margin:

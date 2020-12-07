@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
 import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/ConnectedTf/index.dart';
+import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/TypeTf/index.dart';
 import 'package:flutter_mobx_cb/pages/SubjectDetailPage/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
@@ -20,14 +21,32 @@ abstract class SubjectCreatePage2Base with Store {
   @observable
   ObservableList<Widget> connectedtfs = ObservableList<Widget>();
 
+  List<String> typestrings = List<String>();
+
+  @observable
+  ObservableList<Widget> typetfs = ObservableList<Widget>();
+
+  @observable
+  ObservableList<DropdownMenuItem> dropdownItems =
+      ObservableList<DropdownMenuItem>();
+
   @observable
   String sentense;
 
   @action
+  addNTypeTfs() {
+    for (int i = 0; i < typestrings.length; i++) {
+      var temp = List<String>();
+      temp.add(typestrings[i]);
+      temp.add(0.toString());
+      subject.typelist.add(temp);
+      typetfs.add(TypeTf(i));
+    }
+  }
+
+  @action
   addConnectedTfs() {
     connectedtfs.add(ConnectedTf(connectedtfs.length));
-    var reservevalue = subject.classlist.map((e) => e.classcode).toList()[0];
-    subject.connected.add([reservevalue, reservevalue]);
   }
 
   @action
@@ -55,6 +74,19 @@ abstract class SubjectCreatePage2Base with Store {
   SubjectCreatePage2Base(this.context, this.subject) {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     getSentense();
+    subject.classlist.forEach((element) {
+      if (!typestrings.contains(element.type)) {
+        typestrings.add(element.type);
+      }
+    });
+
+    dropdownItems.add(DropdownMenuItem(
+        child: Text("None", style: appmobx.getTfStyle()), value: "None"));
+    subject.classlist.map((e) => e.classcode).toList().forEach((element) {
+      dropdownItems.add(DropdownMenuItem(
+          child: Text(element, style: appmobx.getTfStyle()), value: element));
+    });
+    addNTypeTfs();
     addConnectedTfs();
   }
 

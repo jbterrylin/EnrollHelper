@@ -9,34 +9,23 @@ part of 'provider.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ConnectedTfMobx on ConnectedTfBase, Store {
-  final _$dropdownItemsAtom = Atom(name: 'ConnectedTfBase.dropdownItems');
+  final _$dropdownsAtom = Atom(name: 'ConnectedTfBase.dropdowns');
 
   @override
-  ObservableList<DropdownMenuItem<dynamic>> get dropdownItems {
-    _$dropdownItemsAtom.reportRead();
-    return super.dropdownItems;
+  ObservableList<Widget> get dropdowns {
+    _$dropdownsAtom.reportRead();
+    return super.dropdowns;
   }
 
   @override
-  set dropdownItems(ObservableList<DropdownMenuItem<dynamic>> value) {
-    _$dropdownItemsAtom.reportWrite(value, super.dropdownItems, () {
-      super.dropdownItems = value;
+  set dropdowns(ObservableList<Widget> value) {
+    _$dropdownsAtom.reportWrite(value, super.dropdowns, () {
+      super.dropdowns = value;
     });
   }
 
   final _$ConnectedTfBaseActionController =
       ActionController(name: 'ConnectedTfBase');
-
-  @override
-  dynamic addPostFrameCallback() {
-    final _$actionInfo = _$ConnectedTfBaseActionController.startAction(
-        name: 'ConnectedTfBase.addPostFrameCallback');
-    try {
-      return super.addPostFrameCallback();
-    } finally {
-      _$ConnectedTfBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   dynamic setClass(String value, int dropdown) {
@@ -52,7 +41,7 @@ mixin _$ConnectedTfMobx on ConnectedTfBase, Store {
   @override
   String toString() {
     return '''
-dropdownItems: ${dropdownItems}
+dropdowns: ${dropdowns}
     ''';
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/User.dart';
 import 'package:flutter_mobx_cb/pages/RegisterPage3/index.dart';
-import 'package:flutter_mobx_cb/utils/storage.dart';
+import 'package:flutter_mobx_cb/utils/Storage.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';

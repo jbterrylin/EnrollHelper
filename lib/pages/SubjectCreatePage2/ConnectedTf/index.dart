@@ -14,58 +14,23 @@ class HomeWidget extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(top: 8.0),
         child: Observer(builder: (_) {
-          return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                    width: MediaQuery.of(context).size.width * 0.35,
-                    child: DropdownButtonFormField(
-                      decoration:
-                          state.appmobx.getDropdownButtonFormFieldDeco(),
-                      value: state.connected[0],
-                      isDense: true,
-                      onChanged: (value) {
-                        state.setClass(value, 0);
-                      },
-                      items: state.dropdownItems.isNotEmpty
-                          ? state.dropdownItems
-                          : [
-                              DropdownMenuItem(
-                                  child: Text(
-                                    "waiting...",
-                                    style: state.appmobx.getTfStyle(),
-                                  ),
-                                  value: state.connected[0])
-                            ],
-                    )),
-                Icon(
-                  Icons.link,
-                  // color: Colors.pink,
-                  size: 32.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
-                ),
-                Container(
-                    width: MediaQuery.of(context).size.width * 0.35,
-                    child: DropdownButtonFormField(
-                      decoration:
-                          state.appmobx.getDropdownButtonFormFieldDeco(),
-                      value: state.connected[1],
-                      isDense: true,
-                      onChanged: (value) {
-                        state.setClass(value, 1);
-                      },
-                      items: state.dropdownItems.isNotEmpty
-                          ? state.dropdownItems
-                          : [
-                              DropdownMenuItem(
-                                  child: Text(
-                                    "waiting...",
-                                    style: state.appmobx.getTfStyle(),
-                                  ),
-                                  value: state.connected[0])
-                            ],
-                    )),
-              ]);
+          return Row(children: <Widget>[
+            Column(children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    state.dropdowns.length >= 1 ? state.dropdowns[0] : null,
+                    Icon(
+                      Icons.link,
+                      // color: Colors.pink,
+                      size: 32.0,
+                      semanticLabel: 'Text to announce in accessibility modes',
+                    ),
+                    state.dropdowns.length >= 2 ? state.dropdowns[1] : null,
+                  ]),
+              Column(children: state.dropdowns.sublist(2)),
+            ])
+          ]);
         }));
   }
 }

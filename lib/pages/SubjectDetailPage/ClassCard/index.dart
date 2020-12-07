@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_mobx_cb/api/model/Class.dart';
 import 'package:flutter_mobx_cb/pages/SubjectDetailPage/ClassCard/provider.dart';
 import 'package:provider/provider.dart';
 

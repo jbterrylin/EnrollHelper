@@ -26,15 +26,15 @@ abstract class ClassCardBase with Store {
     List<Widget> daytimecontent = List<Widget>();
     List wkdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-    for (int i = 0; i < classdata.day.length; i++) {
+    for (int i = 0; i < classdata.days.length; i++) {
       daytimecontent.add(Row(
         // mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          Text(wkdays[classdata.day[i] - 1] +
+          Text(wkdays[classdata.days[i].day - 1] +
               " " +
-              classdata.time[i][0] +
+              classdata.days[i].time[0] +
               " - " +
-              classdata.time[i][1]),
+              classdata.days[i].time[1]),
         ],
       ));
     }

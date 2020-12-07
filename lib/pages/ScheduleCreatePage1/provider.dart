@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
 import 'package:flutter_mobx_cb/pages/ScheduleCreatePage1/SubjectCard/index.dart';
 import 'package:flutter_mobx_cb/pages/ScheduleCreatePage2/index.dart';
-import 'package:flutter_mobx_cb/utils/storage.dart';
+import 'package:flutter_mobx_cb/utils/Storage.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';
 import 'package:provider/provider.dart';
