@@ -15,7 +15,7 @@ abstract class ScheduleCreatePage2Base with Store {
   var appmobx;
 
   @observable
-  List<String> selectedchipname = ObservableList<String>();
+  ObservableList<String> selectedchipname = ObservableList<String>();
 
   List<Subject> selectedsubject = List<Subject>();
 
@@ -54,21 +54,19 @@ abstract class ScheduleCreatePage2Base with Store {
   setsubjectchips() {
     notmustsubjects = ObservableList<Widget>();
     mustsubjects = ObservableList<Widget>();
-    selectedsubject.forEach((e) => mustsubjectstrings
-            .contains(e.subjectcode + " - " + e.subjectname)
+    selectedsubject.forEach((e) => mustsubjectstrings.contains(e.subjectcode)
         ? mustsubjects.add(Chip(
-            label: Text(e.subjectcode + " - " + e.subjectname),
+            label: Text(e.subjectcode),
             onDeleted: () {
-              mustsubjectstrings.remove(e.subjectcode + " - " + e.subjectname);
+              mustsubjectstrings.remove(e.subjectcode);
               setsubjectchips();
             },
           ))
         : notmustsubjects.add(Chip(
-            label: Text(e.subjectcode + " - " + e.subjectname),
+            label: Text(e.subjectcode),
             onDeleted: () {
-              mustsubjectstrings.add(e.subjectcode + " - " + e.subjectname);
+              mustsubjectstrings.add(e.subjectcode);
               setsubjectchips();
-              debugPrint("hello");
             },
           )));
   }

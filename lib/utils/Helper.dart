@@ -5,7 +5,7 @@ TimeOfDay stringToTimeOfDay(String time) {
   if (time.contains("AM") && time.split(":")[0] == "12") {
     // for 12:00 AM
     hour = 0;
-  } else if (time.contains("PM")) {
+  } else if (time.contains("PM") && time.split(":")[0] != "12") {
     // for pm
     hour = 12 + int.parse(time.split(":")[0]);
   } else {
@@ -26,8 +26,8 @@ double timeStringToDouble(String time) {
 }
 
 bool betweenTime(List<String> a, String b) {
-  if (timeStringToDouble(a[0]) > timeStringToDouble(b) &&
-      timeStringToDouble(a[1]) < timeStringToDouble(b)) {
+  if (timeStringToDouble(a[0]) < timeStringToDouble(b) &&
+      timeStringToDouble(a[1]) > timeStringToDouble(b)) {
     return true;
   }
   return false;

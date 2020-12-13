@@ -5,6 +5,9 @@ New to flutter. Hope can done this shit. (ง •_•)ง
 
 flutter packages pub run build_runner build
 
+    // let all subject have logical class time
+    // (ex: get each combination with 1 lecture 1 tutorial with no time clash)
+
 change chain icon to dropdown: only connect, connect, only connect vice versa
 only show connected class shit
 

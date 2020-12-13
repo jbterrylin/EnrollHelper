@@ -25,10 +25,6 @@ abstract class ConnectedDdBase with Store {
 
   @action
   setClass(String value) {
-    debugPrint("aaa");
-    debugPrint(value);
-    debugPrint(subjectcreatepage2mobx.subject.connected[connectedtfindex].length
-        .toString());
     subjectcreatepage2mobx.subject.connected[connectedtfindex][index] = value;
     if (value != "None" &&
         index ==

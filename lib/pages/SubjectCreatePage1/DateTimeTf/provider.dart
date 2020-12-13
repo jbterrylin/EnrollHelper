@@ -45,7 +45,6 @@ abstract class DateTimeTfBase with Store {
     appmobx = Provider.of<AppMobx>(context, listen: false);
     subjectcreatepage1mobx =
         Provider.of<SubjectCreatePage1Mobx>(context, listen: false);
-    debugPrint(TimeOfDay(hour: 0, minute: 0).toString());
 
     timecontroller = TextEditingController();
     Future.delayed(Duration.zero, () {

@@ -51,7 +51,6 @@ abstract class SubjectDetailPageBase with Store {
         var subjects = await sharedPref.read("subjects");
         sharedPref.remove("subjects");
         sharedPref.save("subjects", [...subjects, subject]);
-        debugPrint("aaaa");
       } catch (Exception) {
         sharedPref.save("subjects", [subject]);
       }

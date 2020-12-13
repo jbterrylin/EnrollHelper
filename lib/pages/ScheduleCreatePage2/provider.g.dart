@@ -13,13 +13,13 @@ mixin _$ScheduleCreatePage2Mobx on ScheduleCreatePage2Base, Store {
       Atom(name: 'ScheduleCreatePage2Base.selectedchipname');
 
   @override
-  List<String> get selectedchipname {
+  ObservableList<String> get selectedchipname {
     _$selectedchipnameAtom.reportRead();
     return super.selectedchipname;
   }
 
   @override
-  set selectedchipname(List<String> value) {
+  set selectedchipname(ObservableList<String> value) {
     _$selectedchipnameAtom.reportWrite(value, super.selectedchipname, () {
       super.selectedchipname = value;
     });

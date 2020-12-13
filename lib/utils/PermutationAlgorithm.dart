@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class PermutationAlgorithm {
   final List<List<List<String>>> elements;
+  String secondlistname;
 
-  PermutationAlgorithm(this.elements);
+  PermutationAlgorithm(this.elements, this.secondlistname);
 
   List<List<String>> permutations() {
     List<List<String>> perms = [];
@@ -14,6 +15,9 @@ class PermutationAlgorithm {
   void generatePermutations(List<List<List<String>>> lists,
       List<List<String>> result, int depth, List<String> current) {
     if (depth == lists.length) {
+      if (secondlistname != null) {
+        current.insert(elements[0][0].length, null);
+      }
       result.add(current);
       return;
     }
