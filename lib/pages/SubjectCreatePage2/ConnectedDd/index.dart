@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_cb/pages/SubjectCreatePage2/ConnectedDd/provider.dart';
 import 'package:provider/provider.dart';
 

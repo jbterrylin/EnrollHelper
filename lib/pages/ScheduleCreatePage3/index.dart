@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_cb/api/model/Subject.dart';
 import 'package:flutter_mobx_cb/pages/ScheduleCreatePage3/provider.dart';
-import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -40,6 +39,7 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ScheduleCreatePage3 extends StatelessWidget {
   List<Subject> selectedsubject;
   List<String> selectedchipname;

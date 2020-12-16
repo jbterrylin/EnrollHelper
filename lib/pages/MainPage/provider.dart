@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx_cb/pages/ScheduleCreatePage1/index.dart';
-import 'package:flutter_mobx_cb/pages/ScheduleListPage/index.dart';
 import 'package:flutter_mobx_cb/pages/SubjectListPage/index.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx_cb/provider.dart';

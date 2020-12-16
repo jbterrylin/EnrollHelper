@@ -28,7 +28,7 @@ abstract class DateTimeTfBase with Store {
 
   @action
   setDay(int value) {
-    subjectcreatepage1mobx.classlist[classindex].day[index].day = value;
+    subjectcreatepage1mobx.classlist[classindex].days[index].day = value;
   }
 
   @action

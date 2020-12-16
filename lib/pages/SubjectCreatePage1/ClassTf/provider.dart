@@ -77,9 +77,9 @@ abstract class ClassTfBase with Store {
 
   @action
   deleteDayTime() {
-    if (daytimetf.length > 1) {
+    if (daytimetf.length > 0) {
       daytimetf.removeLast();
-      subjectcreatepage1mobx.classlist[index].day.removeLast();
+      subjectcreatepage1mobx.classlist[index].days.removeLast();
     }
   }
 
